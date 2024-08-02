@@ -289,6 +289,7 @@
 .container.active .overlay .page.page_signIn {
     opacity: 0;
     margin-left: -100%;
+    padding: 0 4px;
 }
 
 .container.active .overlay .page.page_signUp {
