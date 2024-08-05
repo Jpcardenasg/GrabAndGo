@@ -1,162 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800&display=swap');
-
 .container {
     display: flex;
     height: 650px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    border-radius: 10px;
+    border-radius: 20px;
     overflow: hidden;
+    width: 838px;
 }
-
-/* .container .box {
-    position: relative;
-    height: 100%;
-    width: 50%;
-    transition: all 1.5s;
-    transform: translateX(0);
-    background-color: #fff;
-    z-index: 1;
-}
-
-.container.active .box {
-    transition: all 1.5s;
-    transform: translateX(100%);
-}
-
-.container .box .form {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.container .box .form.sign_up {
-    opacity: 0;
-    z-index: 2;
-    background-color: #fff;
-}
-
-
-.container .box .form.sign_in {
-    transition: all 0.5s;
-    z-index: 5;
-    background-color: #fff;
-}
-
-.container.active .box .form.sign_in {
-    animation: Show 0.65s ease-in-out;
-}
-
-.container .overlay {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: #FF4167;
-    width: calc(100% - 50%);
-    height: 100%;
-    transition: all 1.5s;
-    transform: translateX(0);
-    z-index: 5;
-}
-
-.container.active .overlay {
-    transition: all 1.5s;
-    transform: translateX(-100%);
-}
-
-.container .overlay .page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-}
-
-.container .overlay .page.page_signIn {
-    z-index: 2;
-    background-color: #FF4167;
-}
-
-.container .overlay .page.page_signUp {
-    z-index: 5;
-    background-color: #FF4167;
-}
-
-.overlay .page h3 {
-    color: #fff;
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-.overlay .page p {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 20px;
-    font-size: 17px;
-}
-
-.btn {
-    display: inline-block;
-    outline: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-weight: 550;
-    background-color: transparent;
-    padding: 12px 45px;
-    border-radius: 22px;
-    border: 1.5px solid #fff;
-    cursor: pointer;
-}
-
-.form h3 {
-    color: #222;
-    font-size: 40px;
-}
-
-.form span {
-    color: #3a3838;
-}
-
-#form_input .type {
-    width: 330px;
-    height: 48px;
-    background-color: #EEEDEF;
-    margin: 30px 0;
-}
-
-#form_input .type input {
-    width: 100%;
-    height: 100%;
-    padding: 0 10px;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-}
-
-#form_input .type input::placeholder {
-    color: #A9A8A9;
-}
-
-#form_input .forgot {
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-.bkg {
-    background-color: #FF4167;
-} */
 
 @keyframes Show {
-
     0%,
     49.999% {
         opacity: 0;
@@ -170,7 +21,6 @@
 }
 
 @keyframes Hidden {
-
     0%,
     49.999% {
         opacity: 1;
@@ -263,7 +113,7 @@
     width: 50%;
     transition: all 0.8s;
     transform: translateX(0);
-    background-color: #FF4167;
+    background-color: #F764B6;
     z-index: 1;
     overflow: hidden;
     z-index: 5;
@@ -284,6 +134,7 @@
     text-align: center;
     transition: all 0.5s;
     opacity: 1;
+    background: linear-gradient(180deg, #F764B6 0%, #BB96FD 100%);
 }
 
 .container.active .overlay .page.page_signIn {
@@ -300,6 +151,7 @@
 .overlay .page h3 {
     color: #fff;
     font-size: 40px;
+    font-weight: 700;
     margin-bottom: 15px;
 }
 
@@ -314,13 +166,11 @@
     display: inline-block;
     outline: none;
     color: #fff;
-    text-transform: uppercase;
     font-size: 15px;
-    font-weight: 550;
+    font-weight: 500;
     background-color: transparent;
     padding: 12px 45px;
     border-radius: 22px;
-    border: 1.5px solid #fff;
     cursor: pointer;
 }
 
@@ -336,9 +186,27 @@
 #form_input .type {
     width: 330px;
     height: 48px;
-    background-color: #EEEDEF;
+    color: #909090;
+    background-color: #D9D9D999;
+    border-radius: 8px;
     margin: 30px 0;
 }
+
+.type_select {
+    width: 330px;
+    height: 48px;
+    margin: 30px 0;
+}
+
+.select {
+    width: 48%;
+    height: 48px;
+    padding: 0 10px;
+    color: #909090;
+    background-color: #D9D9D999;
+    border-radius: 8px;
+}
+
 
 #form_input .type input {
     width: 100%;
@@ -351,7 +219,7 @@
 }
 
 #form_input .type input::placeholder {
-    color: #A9A8A9;
+    color: #909090;
 }
 
 #form_input .forgot {
@@ -360,5 +228,10 @@
 }
 
 .bkg {
-    background-color: #FF4167;
+    background: linear-gradient(90deg, #F764B6 0%, #BB96FD 100%);
+}
+
+.btnSign-in,
+.btnSign-up {
+    background: #FFFFFF3D;
 }

@@ -1,7 +1,8 @@
 <div class="container" #container>
     <div class="box">
         <div class="form sign_in">
-            <h3>Sign In</h3>
+            <img src="gnglogo.svg" alt="Grab and Go Logo">
+            <h3 class="mt-4">Sign In</h3>
             <span>or use your account</span>
             <form action="#" id="form_input">
                 <div class="type">
@@ -19,7 +20,7 @@
         <div class="form sign_up py-2 max-h-screen">
             <h3>Sign Up</h3>
             <span>or use your email for register</span>
-            <form action="#" id="form_input" class="overflow-y-auto px-1">
+            <form action="#" id="form_input" class="overflow-y-auto px-4">
                 <div class="type">
                     <input type="text" name="name" placeholder="Name" id="name">
                 </div>
@@ -27,46 +28,34 @@
                     <input type="text" name="lastName" placeholder="Last Name" id="lastName">
                 </div>
                 <div class="type">
+                    <input type="email" name="" placeholder="Email" id="email">
+                </div>
+                <div class="type">
                     <input type="text" name="idNumber" placeholder="Identification Number" id="idNumber">
                 </div>
                 <div class="type">
                     <input type="text" name="telephone" placeholder="Telephone" id="telephone">
                 </div>
-                <div class="type flex flex-col justify-end">
-
-                    <div class="flex justify-around">
-                        <select name="country" id="country" class="w-40">
+                <div class="type_select">
+                    <div class="flex justify-between">
+                        <select name="country" id="country" class="select">
                             <option value="" selected disabled>Country</option>
                             <option value="colombia">Colombia</option>
                         </select>
-                        <select name="region" id="region" class="w-40">
+                        <select name="region" id="region" class="select">
                             <option value="" selected disabled>Region</option>
                             <option value="region">Santander</option>
                         </select>
                     </div>
                 </div>
-                <div class="type flex flex-col">
-                    <label for="region">Select your region</label>
-                    <select name="region" id="region">
-                        <option value="" selected disabled>Region</option>
-                        <option value="region">Santander</option>
-                    </select>
-                </div>
-                <div class="type flex flex-col">
-                    <label for="city">Select your city</label>
-                    <select name="city" id="city">
-                        <option value="" selected disabled>City</option>
-                        <option value="city">Bucaramanga</option>
-                    </select>
-                </div>
-                <div class="type">
-                    <input type="text" name="postalCode" placeholder="Postal Code" id="postalCode">
-                </div>
-                <div class="type">
-                    <input type="email" name="" placeholder="Email" id="email">
-                </div>
-                <div class="type">
-                    <input type="password" name="" placeholder="Password" id="password">
+                <div class="type_select">
+                    <div class="flex justify-between">
+                        <select name="city" id="city" class="select">
+                            <option value="" selected disabled>City</option>
+                            <option value="city">Bucaramanga</option>
+                        </select>
+                        <input class="select" type="text" name="postalCode" placeholder="Postal Code" id="postalCode">
+                    </div>
                 </div>
                 <button class="btn bkg">Sign Up</button>
             </form>
@@ -75,12 +64,10 @@
     <div class="overlay">
         <div class="page page_signIn">
             <h3>Welcome Back!</h3>
-            <p class="px-1">To keep with us please login with your personal info</p>
             <button class="btn btnSign-in" (click)="toggleSignIn()">Sign Up <i class="bi bi-arrow-right"></i></button>
         </div>
         <div class="page page_signUp">
             <h3>Hello Friend!</h3>
-            <p class="px-1">Enter your personal details and start journey with us</p>
             <button class="btn btnSign-up" (click)="toggleSignUp()">
                 <i class="bi bi-arrow-left"></i> Sign In</button>
         </div>
