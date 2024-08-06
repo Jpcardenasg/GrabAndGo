@@ -1,7 +1,20 @@
 .sidenav {
-    transition: all .5s ease;
+    transition: width .5s ease-in-out;
 }
 
+.sidenav-content {
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity .5s ease-in-out;
+}
+
+.is-expanded .sidenav-content {
+    opacity: 1;
+}
+
+.is-collapsed .sidenav-content {
+    opacity: 0;
+}
 
 .gradient-hover:hover {
     background: linear-gradient(180deg, #BB96FD 0%, #F764B6 100%);

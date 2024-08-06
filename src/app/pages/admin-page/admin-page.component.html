@@ -1,7 +1,39 @@
 <div class="flex  w-full ">
+
     <app-sidenav></app-sidenav>
+
     <div class="flex-grow">
         <app-nav-bar></app-nav-bar>
+
+        <nav class="flex items-center justify-between p-4">
+            <div>
+                <h2 class="font-medium text-lg">PRODUCT MANGAMENT</h2>
+            </div>
+            <div class="flex items-center w-2/5">
+                <input type="text" placeholder="Buscar"
+                    class="bg-white text-gray-900 rounded-full px-4 py-2 w-full focus:outline-none shadow-sm">
+            </div>
+            <div class="flex space-x-4">
+                <button
+                    class="bg-white text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300 shadow-sm flex items-center">
+                    <i class='bx bx-trash'></i>
+                    Delete
+                </button>
+                <button
+                    class="bg-white text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300 shadow-sm flex items-center">
+                    <i class='bx bx-edit'></i>
+                    Edit
+                </button>
+                <button
+                    class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 shadow-sm flex items-center">
+                    <i class='bx bx-plus'></i>
+                    Add Product
+                </button>
+            </div>
+        </nav>
+
         <app-product-management></app-product-management>
+
     </div>
+
 </div>
