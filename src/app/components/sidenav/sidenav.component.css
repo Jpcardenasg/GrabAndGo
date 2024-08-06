@@ -14,12 +14,8 @@
     color: transparent;
 }
 
-.sidenav-nav {
-    height: calc(100% - 3.65rem);
-}
-
 .sidenav-nav-item:hover {
     background-color: #F7F7F7;
-    border: 1px solid #E0E3E6;
+    outline: 1px solid #E0E3E6;
     border-radius: 8px;
 }

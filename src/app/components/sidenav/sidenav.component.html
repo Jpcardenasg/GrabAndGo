@@ -1,28 +1,28 @@
-<div class="sidenav bg-sidenav w-64 h-screen" [class]="isCollapsed ? 'sidenav-collapsed':''">
+<div class="sidenav flex flex-col justify-between bg-sidenav w-64 h-screen"
+    [class]="isCollapsed ? 'sidenav-collapsed':''">
 
-    <div class="flex items-center w-full p-4">
-        <button (click)="toggleSidenav()" class="text-center w-12 min-w-12 p-1">
-            <img src="gnglogo-rosa.svg" alt="Grab and go logo rosado">
-        </button>
-        @if (!isCollapsed) {<div class="ml-6 font-bold text-2xl">Grab&Go</div>}
+    <div>
+        <div class="flex items-center w-full p-4">
+            <button (click)="toggleSidenav()" class="text-center w-12 min-w-12 p-1">
+                <img src="gnglogo-rosa.svg" alt="Grab and go logo rosado">
+            </button>
+            @if (!isCollapsed) {<div class="ml-6 font-bold text-2xl">Grab&Go</div>}
+        </div>
+        <ul class="flex flex-col items-center p-4">
+            @for (data of navData; track $index) {
+            <li class="sidenav-nav-item w-full mb-2 cursor-pointer">
+                <a class="flex items-center h-12 transition-colo duration-300 ease-linear gradient-hover">
+                    <i class="text-center w-8 min-w-2 my-2 text-2xl pl-3" [class]="data.icon"></i>
+                    @if (!isCollapsed) {<span class="sidenav-link-text ml-6 text-normal">{{data.label}}</span>}
+                </a>
+            </li>
+            }
+        </ul>
     </div>
 
-    <ul class="sidenav-nav flex flex-col items-center p-4">
-
-        @for (data of navData; track $index) {
-        <li class="sidenav-nav-item w-full mb-2 cursor-pointer">
-            <a class="flex items-center h-12 transition-colo duration-200 ease-in gradient-hover">
-                <i class="text-center w-8 min-w-2 my-2 text-2xl pl-3" [class]="data.icon"></i>
-                @if (!isCollapsed) {<span class="sidenav-link-text ml-6 text-normal">{{data.label}}</span>}
-            </a>
-        </li>
-        }
-
-    </ul>
-
-    <footer>
+    <footer class="flex justify-end p-4">
         @if (!isCollapsed) {
-        <button (click)="closeSidenav()" class="btn-close"><i class='bx bx-arrow-back'></i></button>
+        <button (click)="closeSidenav()" class="text-gray-400"><i class='bx bx-arrow-back'></i></button>
         }
     </footer>
 </div>
