@@ -2,10 +2,6 @@
     transition: all .5s ease;
 }
 
-.sidenav-collapsed {
-    width: 5rem;
-}
-
 
 .gradient-hover:hover {
     background: linear-gradient(180deg, #BB96FD 0%, #F764B6 100%);

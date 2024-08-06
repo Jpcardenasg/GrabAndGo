@@ -1,12 +1,16 @@
-<div class="sidenav flex flex-col justify-between bg-sidenav w-64 h-screen"
-    [class]="isCollapsed ? 'sidenav-collapsed':''">
+<div class="sidenav flex flex-col justify-between bg-sidenav h-screen" [class]="isCollapsed ? 'w-20':'w-64'">
 
     <div>
         <div class="flex items-center w-full p-4">
             <button (click)="toggleSidenav()" class="text-center w-12 min-w-12 p-1">
                 <img src="gnglogo-rosa.svg" alt="Grab and go logo rosado">
             </button>
-            @if (!isCollapsed) {<div class="ml-6 font-bold text-2xl">Grab&Go</div>}
+            @if (!isCollapsed) {
+            <div class="text-end">
+                <div class="ml-6 font-semibold text-sm">Angeli Nicol Corredor</div>
+                <span class="text-xs font-medium text-gray-400">Administrador</span>
+            </div>
+            }
         </div>
         <ul class="flex flex-col items-center p-4">
             @for (data of navData; track $index) {
@@ -22,7 +26,7 @@
 
     <footer class="flex justify-end p-4">
         @if (!isCollapsed) {
-        <button (click)="closeSidenav()" class="text-gray-400"><i class='bx bx-arrow-back'></i></button>
+        <button (click)="closeSidenav()" class="text-xl text-gray-400"><i class='bx bx-arrow-to-left'></i></button>
         }
     </footer>
 </div>
