@@ -1,13 +1,30 @@
-<div class="p-4">
-    <h2 class="text-xl font-semibold">Angeli Corredor Rodriguez</h2>
-    <p class="text-sm">Administrador</p>
+<div #sidebarContainer
+    class="flex flex-col justify-between h-full p-4 bg-sidebar transition-width duration-300 overflow-x-hidden "
+    [class.w-16]="isCollapsed" [class.w-72]="!isCollapsed">
+
+    <div class="block">
+        <header class="flex justify-between">
+            <img src="gnglogo-rosa.svg" alt="Grab and Go logo rosa">
+            <div class="text-end">
+                <h2 class="w-full text-sm font-semibold text-wrap">Angeli Corredor Rodriguez</h2>
+                <p class="text-xs text-gray-500">Administrador</p>
+            </div>
+        </header>
+        <nav class="mt-10">
+            <a href="#" class="py-2 text-gray-700 hover:bg-gray-200"><i class='bx bx-home'></i>Home</a>
+            <a href="#" class="py-2 text-gray-700 hover:bg-gray-200"><i class='bx bx-package'></i>Products</a>
+            <a href="#" class="py-2 text-gray-700 hover:bg-gray-200"><i class='bx bx-user'></i>Customers</a>
+            <a href="#" class="py-2 text-gray-700 hover:bg-gray-200"><i class='bx bx-cart-alt'></i>Orders</a>
+            <a href="#" class="py-2 text-gray-700 hover:bg-gray-200"><i class='bx bx-credit-card'></i>Payments</a>
+            <a href="#" class="py-2 text-gray-700 hover:bg-gray-200"><i class='bx bx-group'></i>Employees</a>
+            <a href="#" class="py-2 text-gray-700 hover:bg-gray-200"><i class='bx bxs-data'></i>Other</a>
+        </nav>
+    </div>
+
+    <footer class="text-end">
+        <button (click)="toggleSidebar()" class="text-2xl text-gray-600 focus:outline-none">
+            <i class='bx bx-arrow-back'></i>
+        </button>
+    </footer>
+
 </div>
-<nav class="mt-4">
-    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200"><i>Icon</i>Home</a>
-    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200"><i>Icon</i>Productos</a>
-    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200"><i>Icon</i>Clientes</a>
-    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200"><i>Icon</i>Pedidos</a>
-    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200"><i>Icon</i>Pagos</a>
-    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200"><i>Icon</i>Empleados</a>
-    <a href="#" class="block py-2 px-4 text-gray-700 hover:bg-gray-200"><i>Icon</i>Mas</a>
-</nav>

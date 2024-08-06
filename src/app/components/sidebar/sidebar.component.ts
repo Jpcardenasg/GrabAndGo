@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,5 +8,13 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+
+  @ViewChild('sidebarContainer', { static: false }) sidebarContainer!: ElementRef;
+
+  isCollapsed = false;
+
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 
 }
