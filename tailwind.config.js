@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'sidebar': '#F0F0F0',
+        'sidenav': '#F0F0F0',
       },
       backgroundImage: {
         'navbar-gradient': 'linear-gradient(90deg, #F764B6 0%, #BB96FD 100%)',

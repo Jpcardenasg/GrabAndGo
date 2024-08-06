@@ -23,6 +23,6 @@ export class LoginComponent {
 	}
 
 	onLogin() {
-		this.router.navigate(['/admin-page']);
+		this.router.navigate(['/admin']);
 	}
 }

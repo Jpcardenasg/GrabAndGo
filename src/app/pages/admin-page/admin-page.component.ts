@@ -1,12 +1,12 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { Component } from '@angular/core';
 import { ProductManagementComponent } from './product-management/product-management.component';
 import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
+import { SideNavComponent } from '../../components/sidenav/sidenav.component';
 
 @Component({
 	selector: 'app-admin-page',
 	standalone: true,
-	imports: [SidebarComponent, ProductManagementComponent, NavBarComponent],
+	imports: [ProductManagementComponent, NavBarComponent, SideNavComponent],
 	templateUrl: './admin-page.component.html',
 	styleUrl: './admin-page.component.css'
 })
