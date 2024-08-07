@@ -1,10 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { InputComponent } from '../../components/ui/input/input.component';
+import { SelectComponent } from '../../components/ui/select/select.component';
 
 @Component({
 	selector: 'app-login',
 	standalone: true,
-	imports: [],
+	imports: [InputComponent, SelectComponent],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.css'
 })

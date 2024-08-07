@@ -2,15 +2,13 @@ import { Component, Input } from '@angular/core';
 import { ManagementBarComponent } from '../../../components/management-bar/management-bar.component';
 
 
-interface Product {
-	name: string;
-	dimensions: string;
-	gamma: string;
-	description: string;
-	supplier: string;
-	stock: number;
-	sellPrice: number;
-	supplierPrice: number;
+interface Order {
+	id: number,
+	order_date: string,
+	estimated_deliery_date: string,
+	shipping_date: string,
+	status_id: number,
+	customer_id: string;
 }
 
 @Component({
@@ -23,9 +21,7 @@ interface Product {
 export class OrderManagementComponent {
 	@Input() title?: string;
 
-	products: Product[] = [
-		{ name: 'Producto 1', dimensions: 'Regular', gamma: 'No sé', description: 'Ok', supplier: 'Angelinic', stock: 346, sellPrice: 3400, supplierPrice: 1400 }
-	];
+	orders: Order[] = [];
 
 
 	addProduct() {

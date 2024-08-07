@@ -8,6 +8,7 @@
 }
 
 @keyframes Show {
+
     0%,
     49.999% {
         opacity: 0;
@@ -21,6 +22,7 @@
 }
 
 @keyframes Hidden {
+
     0%,
     49.999% {
         opacity: 1;
@@ -62,12 +64,6 @@
 }
 
 .container .box .form.sign_up {
-    /* transition: all 0.5s;
-    opacity: 0;
-    transform: translateX(-100%); */
-}
-
-.container .box .form.sign_up {
     transition: all 1.15s;
     z-index: 1;
     opacity: 0;
@@ -89,22 +85,6 @@
 .container.active .box .form.sign_up {
     z-index: 5;
     opacity: 1;
-}
-
-.container.active .box .form.sign_up {
-    /* opacity: 1;
-    transform: translateX(0%); */
-}
-
-.container .box .form.sign_in {
-    /* transition: all 0.5s;
-    opacity: 1;
-    transform: translateX(0%); */
-}
-
-.container.active .box .form.sign_in {
-    /* opacity: 0;
-    transform: translateX(100%); */
 }
 
 .container .overlay {
@@ -195,7 +175,6 @@
 .type_select {
     width: 330px;
     height: 48px;
-    margin: 30px 0;
 }
 
 .select {
@@ -203,7 +182,7 @@
     height: 48px;
     padding: 0 10px;
     color: #909090;
-    background-color: #D9D9D999;
+    background-color: #F7F7F7;
     border-radius: 8px;
 }
 

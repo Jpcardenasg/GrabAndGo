@@ -1,75 +1,82 @@
-<div class="container" #container>
-    <div class="box">
-        <div class="form sign_in">
-            <img src="gnglogo.svg" alt="Grab and Go logo">
-            <h3 class="mt-4">Sign In</h3>
-            <span>or use your account</span>
-            <form action="#" id="form_input" (submit)="onLogin()">
-                <div class="type">
-                    <input type="email" placeholder="Email" name="" id="email">
-                </div>
-                <div class="type">
-                    <input type="password" placeholder="Password" name="" id="password">
-                </div>
-                <div class="forgot">
-                    <span>Forgot your password?</span>
-                </div>
-                <button class="btn bkg">Sign In</button>
-            </form>
-        </div>
-        <div class="form sign_up py-2 max-h-screen">
-            <h3>Sign Up</h3>
-            <span>or use your email for register</span>
-            <form action="#" id="form_input" class="overflow-y-auto px-4">
-                <div class="type">
-                    <input type="text" name="name" placeholder="Name" id="name">
-                </div>
-                <div class="type">
-                    <input type="text" name="lastName" placeholder="Last Name" id="lastName">
-                </div>
-                <div class="type">
-                    <input type="email" name="" placeholder="Email" id="email">
-                </div>
-                <div class="type">
-                    <input type="text" name="idNumber" placeholder="Identification Number" id="idNumber">
-                </div>
-                <div class="type">
-                    <input type="text" name="telephone" placeholder="Telephone" id="telephone">
-                </div>
-                <div class="type_select">
-                    <div class="flex justify-between">
-                        <select name="country" id="country" class="select">
+<main class="flex justify-center items-center w-full h-screen">
+    <div class="container" #container>
+        <div class="box">
+
+            <div class="form sign_in">
+                <img src="gnglogo.svg" alt="Grab and Go logo">
+                <h3 class="mt-4">Sign In</h3>
+                <span>or use your account</span>
+                <form action="#" id="form_input" (submit)="onLogin()">
+                    <app-input type="text" inputId="username" label="Username"></app-input>
+                    <app-input type="password" inputId="password" label="Password"></app-input>
+                    <div class="forgot">
+                        <span>Forgot your password?</span>
+                    </div>
+                    <button class="btn bkg">Sign In</button>
+                </form>
+            </div>
+
+            <div class="form sign_up py-2 max-h-screen">
+                <h3>Sign Up</h3>
+                <span>or use your email for register</span>
+                <form action="#" id="form_input" class="overflow-y-auto px-4">
+
+                    <app-input type="text" inputId="nameSignUp" label="Name"></app-input>
+                    <app-input type="text" inputId="lastNameSignUp" label="Last Name"></app-input>
+                    <app-input type="text" inputId="usernameSignUp" label="Username"></app-input>
+                    <app-input type="password" inputId="passwordSignUp" label="Password"></app-input>
+                    <app-input type="email" inputId="emailSignUp" label="Email"></app-input>
+                    <app-input type="text" inputId="idNumberSignUp" label="Identification number"></app-input>
+                    <app-input type="number" inputId="telephoneSignUp" label="Telephone"></app-input>
+
+                    <div class="flex justify-between my-8 h-12">
+                        <app-select selectId="country" name="country" label="Country" width="160px">
                             <option value="" selected disabled>Country</option>
                             <option value="colombia">Colombia</option>
-                        </select>
-                        <select name="region" id="region" class="select">
-                            <option value="" selected disabled>Region</option>
-                            <option value="region">Santander</option>
-                        </select>
+                            <option value="mexico">Mexico</option>
+                        </app-select>
+                        <app-select selectId="region" name="region" label="Region" width="160px">
+                            <option value="" selected disabled>Country</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="mexico">Mexico</option>
+                        </app-select>
                     </div>
-                </div>
-                <div class="type_select">
-                    <div class="flex justify-between">
-                        <select name="city" id="city" class="select">
+
+                    <div class="flex justify-between my-8 h-12">
+                        <app-select selectId="city" name="city" label="City" width="160px">
                             <option value="" selected disabled>City</option>
-                            <option value="city">Bucaramanga</option>
-                        </select>
-                        <input class="select" type="text" name="postalCode" placeholder="Postal Code" id="postalCode">
+                            <option value="colombia">Colombia</option>
+                            <option value="mexico">Mexico</option>
+                        </app-select>
                     </div>
-                </div>
-                <button class="btn bkg">Sign Up</button>
-            </form>
+
+                    <!-- <div class="type_select">
+                        <div class="flex justify-between">
+                            <select name="city" id="city" class="select">
+                                <option value="" selected disabled>City</option>
+                                <option value="city">Bucaramanga</option>
+                            </select>
+                            <input class="select" type="number" name="postalCode" placeholder="Postal Code"
+                                id="postalCode">
+                        </div>
+                    </div> -->
+
+                    <button class="btn bkg">Sign Up</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="overlay">
+            <div class="page page_signIn">
+                <h3>Welcome Back!</h3>
+                <button class="btn btnSign-in" (click)="toggleSignIn()">Sign Up <i
+                        class='bx bx-chevron-right'></i></button>
+            </div>
+            <div class="page page_signUp">
+                <h3>Hello Friend!</h3>
+                <button class="btn btnSign-up" (click)="toggleSignUp()">
+                    <i class='bx bx-chevron-left'></i> Sign In</button>
+            </div>
         </div>
     </div>
-    <div class="overlay">
-        <div class="page page_signIn">
-            <h3>Welcome Back!</h3>
-            <button class="btn btnSign-in" (click)="toggleSignIn()">Sign Up <i class='bx bx-chevron-right'></i></button>
-        </div>
-        <div class="page page_signUp">
-            <h3>Hello Friend!</h3>
-            <button class="btn btnSign-up" (click)="toggleSignUp()">
-                <i class='bx bx-chevron-left'></i> Sign In</button>
-        </div>
-    </div>
-</div>
+</main>

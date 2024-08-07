@@ -1,0 +1,13 @@
+<div class="h-12 relative flex rounded-xl" [style.width]="setWidth()">
+
+    <select [id]=" selectId" [name]="name ? name : selectId" required
+        class="peer w-full outline-none px-4 text-base rounded-xl bg-body invalid:text-input focus:bg-white border focus:shadow-md">
+        <ng-content></ng-content> <!-- Permite insertar opciones desde el componente padre -->
+    </select>
+
+    <label [for]="selectId"
+        class="absolute top-1/2 left-4 px-2 rounded bg-transparent text-transparent peer-focus:top-0 peer-focus:left-3 font-light text-base peer-focus:bg-white peer-focus:text-sm peer-focus:text-mainpink translate-y-[-50%] duration-150">
+        {{label}}
+    </label>
+
+</div>
