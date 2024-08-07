@@ -16,7 +16,7 @@
         <ul class="flex flex-col items-center p-4">
             @for (data of navData; track $index) {
             <li class="sidenav-nav-item w-full mb-2 cursor-pointer">
-                <a class="flex items-center h-12 gradient-hover">
+                <a [routerLink]="data.routeLink" class="flex items-center h-12 gradient-hover">
                     <i class="text-center w-8 min-w-2 my-2 text-2xl pl-3" [class]="data.icon"></i>
                     @if (!isCollapsed) {<span class="sidenav-content ml-6 text-normal">{{data.label}}</span>}
                 </a>

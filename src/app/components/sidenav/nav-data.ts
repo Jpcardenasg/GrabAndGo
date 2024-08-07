@@ -5,32 +5,32 @@ export const sideNavbarData = [
         label: "Home"
     },
     {
-        routeLink: "/admin",
+        routeLink: "products",
         icon: "bx bx-package",
         label: "Products"
     },
     {
-        routeLink: "/admin",
+        routeLink: "customers",
         icon: "bx bx-user",
         label: "Customers"
     },
     {
-        routeLink: "/admin",
+        routeLink: "orders",
         icon: "bx bx-cart-alt",
         label: "Orders"
     },
     {
-        routeLink: "/admin",
+        routeLink: "payments",
         icon: "bx bx-credit-card",
         label: "Payments"
     },
     {
-        routeLink: "/admin",
+        routeLink: "employees",
         icon: "bx bx-group",
         label: "Employees"
     },
     {
-        routeLink: "/admin",
+        routeLink: "entities",
         icon: "bx bxs-data",
         label: "More"
     },

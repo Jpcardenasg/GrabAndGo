@@ -3,11 +3,12 @@
     <app-sidenav></app-sidenav>
 
     <div class="flex-grow">
+
         <app-nav-bar></app-nav-bar>
 
         <nav class="flex items-center justify-between p-4">
             <div>
-                <h2 class="font-medium text-lg">PRODUCT MANGAMENT</h2>
+                <h2 class="ml-1 font-medium text-lg">PRODUCT MANGAMENT</h2>
             </div>
             <div class="flex items-center w-2/5">
                 <input type="text" placeholder="Buscar"
@@ -32,7 +33,7 @@
             </div>
         </nav>
 
-        <app-product-management></app-product-management>
+        <router-outlet></router-outlet>
 
     </div>
 
