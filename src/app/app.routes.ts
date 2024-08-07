@@ -15,12 +15,12 @@ export const routes: Routes = [
     { path: 'customer', component: CustomerPageComponent },
     {
         path: 'admin', component: AdminPageComponent, children: [
-            { path: 'products', component: ProductManagementComponent },
-            { path: 'customers', component: CustomerManagementComponent },
-            { path: 'orders', component: OrderManagementComponent },
-            { path: 'payments', component: PaymentManagementComponent },
-            { path: 'employees', component: EmployeeManagementComponent },
-            { path: 'entities', component: EntityManagementComponent },
+            { path: 'products', component: ProductManagementComponent, data: { title: 'Product' } },
+            { path: 'customers', component: CustomerManagementComponent, data: { title: 'Customer' } },
+            { path: 'orders', component: OrderManagementComponent, data: { title: 'Order' } },
+            { path: 'payments', component: PaymentManagementComponent, data: { title: 'Payment' } },
+            { path: 'employees', component: EmployeeManagementComponent, data: { title: 'Employee' } },
+            { path: 'entities', component: EntityManagementComponent, data: { title: 'Entity' } },
         ]
     },
 

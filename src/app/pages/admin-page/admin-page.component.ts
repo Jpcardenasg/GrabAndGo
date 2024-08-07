@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProductManagementComponent } from './product-management/product-management.component';
 import { NavBarComponent } from '../../components/nav-bar/nav-bar.component';
 import { SideNavComponent } from '../../components/sidenav/sidenav.component';
@@ -19,5 +19,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 
 export class AdminPageComponent {
+
+	@Input('title') title?: string;
 
 }
