@@ -28,6 +28,7 @@
                     <app-input type="email" inputId="emailSignUp" label="Email"></app-input>
                     <app-input type="text" inputId="idNumberSignUp" label="Identification number"></app-input>
                     <app-input type="number" inputId="telephoneSignUp" label="Telephone"></app-input>
+                    <app-input type="text" inputId="addressSignUp" label="Address"></app-input>
 
                     <div class="flex justify-between my-8 h-12">
                         <app-select selectId="country" name="country" label="Country" width="160px">
@@ -48,18 +49,15 @@
                             <option value="colombia">Colombia</option>
                             <option value="mexico">Mexico</option>
                         </app-select>
-                    </div>
-
-                    <!-- <div class="type_select">
-                        <div class="flex justify-between">
-                            <select name="city" id="city" class="select">
-                                <option value="" selected disabled>City</option>
-                                <option value="city">Bucaramanga</option>
-                            </select>
-                            <input class="select" type="number" name="postalCode" placeholder="Postal Code"
-                                id="postalCode">
+                        <div class="h-12 relative flex rounded-xl w-[160px]">
+                            <input type="number" id="postalCode" required
+                                class="peer w-full outline-none px-4 text-base rounded-xl bg-body focus:bg-white border focus:shadow-md" />
+                            <label for="postalCode"
+                                class="absolute top-1/2 left-4 px-2 rounded bg-body text-input peer-focus:top-0 peer-focus:left-3 font-light text-base peer-focus:bg-white peer-focus:text-sm peer-focus:text-mainpink peer-valid:-top-0 peer-valid:left-3 peer-valid:text-sm peer-valid:text-mainpink translate-y-[-50%] duration-150">
+                                Postal Code
+                            </label>
                         </div>
-                    </div> -->
+                    </div>
 
                     <button class="btn bkg">Sign Up</button>
                 </form>

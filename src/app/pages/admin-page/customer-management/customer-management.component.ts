@@ -1,46 +1,27 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ManagementBarComponent } from '../../../components/management-bar/management-bar.component';
-
-interface Product {
-	name: string;
-	dimensions: string;
-	gamma: string;
-	description: string;
-	supplier: string;
-	stock: number;
-	sellPrice: number;
-	supplierPrice: number;
-}
+import { Customer, CustomerResults } from '../../../interfaces/customer';
+import { Observable } from 'rxjs';
+import { CustomerService } from '../../../services/customer.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-	selector: 'app-customer-management',
-	standalone: true,
-	imports: [ManagementBarComponent],
-	templateUrl: './customer-management.component.html',
-	styleUrl: './customer-management.component.css'
+    selector: 'app-customer-management',
+    standalone: true,
+    imports: [AsyncPipe, ManagementBarComponent],
+    templateUrl: './customer-management.component.html',
+    styleUrl: './customer-management.component.css'
 })
-export class CustomerManagementComponent {
+export class CustomerManagementComponent implements OnInit {
 
-	@Input() title?: string;
+    @Input() title?: string;
 
-	products: Product[] = [
-		{ name: 'Producto 1', dimensions: 'Regular', gamma: 'No sé', description: 'Ok', supplier: 'Angelinic', stock: 346, sellPrice: 3400, supplierPrice: 1400 }
-	];
+    public customerList$!: Observable<CustomerResults>;
+    constructor(private service: CustomerService) { };
 
+    ngOnInit(): void {
+        this.customerList$ = this.service.getCustomerList();
+    }
 
-	addProduct() {
-		console.log('Add');
-
-	}
-
-	deleteProduct() {
-		console.log('Del');
-
-	}
-
-	editProduct() {
-		console.log('Edit');
-
-	}
 
 }

@@ -24,7 +24,9 @@ export class LoginComponent {
 		this.container.nativeElement.classList.remove('active');
 	}
 
-	onLogin() {
+	async onLogin() {
+
 		this.router.navigate(['/admin']);
+
 	}
 }
