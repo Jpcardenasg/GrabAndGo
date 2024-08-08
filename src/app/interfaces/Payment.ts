@@ -25,3 +25,9 @@ export interface PaymentField {
     name: string;
     type: string;
 }
+
+export interface PaymentMethodField {
+    header: string;
+    name: string;
+    type: string;
+}

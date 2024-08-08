@@ -1,9 +1,8 @@
-import { Boss } from "./Boss";
 import { Office } from "./Office";
 import { User } from "./User";
 
 export interface Employee {
-    id: Number;
+    id: number;
     name: String;
     lastName1: string;
     lastName2: string;
@@ -12,7 +11,7 @@ export interface Employee {
     position: string;
     user: User;
     telephone: number;
-    boss: Boss;
+    boss: Employee;
     office: Office;
 }
 

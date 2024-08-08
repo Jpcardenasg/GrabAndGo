@@ -7,3 +7,13 @@ export interface Inventory {
     currentStock: number;
     product: Product;
 }
+
+export interface InventoryResults {
+    Inventories: Inventory[];
+}
+
+export interface InventoryField {
+    header: string;
+    name: string;
+    type: string;
+}
