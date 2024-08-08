@@ -63,7 +63,7 @@ El sistema cubre una variedad de casos de uso que permiten a los administradores
 
 ### **MODELO RELACIONAL**
 
-
+<!-- ![image](DER_Taller3.png) -->
 
 **DDL**
 
