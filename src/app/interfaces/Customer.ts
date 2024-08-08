@@ -1,10 +1,10 @@
-import { City } from "./locationModels";
-import { Phone } from "./phone";
+import { City } from "./LocationModels";
+import { Phone } from "./Phone";
 
 export interface Customer {
+    idNumber: string;
     username: string;
     password: string;
-    idNumber: string;
     name: string;
     lastName: string;
     address: string;

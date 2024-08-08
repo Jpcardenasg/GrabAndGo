@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ManagementBarComponent } from '../../../components/management-bar/management-bar.component';
-import { Order } from '../../../interfaces/order';
+import { Order } from '../../../interfaces/Order';
 import { ModalComponent } from '../../../components/modal/modal.component';
 import { InputComponent } from '../../../components/ui/input/input.component';
 

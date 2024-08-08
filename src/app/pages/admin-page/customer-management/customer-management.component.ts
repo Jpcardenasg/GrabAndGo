@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ManagementBarComponent } from '../../../components/management-bar/management-bar.component';
-import { CustomerField, CustomerResults } from '../../../interfaces/customer';
+import { CustomerField, CustomerResults } from '../../../interfaces/Customer';
 import { Observable } from 'rxjs';
 import { CustomerService } from '../../../services/customer.service';
 import { AsyncPipe } from '@angular/common';

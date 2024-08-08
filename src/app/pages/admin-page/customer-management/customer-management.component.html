@@ -1,15 +1,19 @@
 <main class="p-4">
     @if (isModalOpen) {
     <app-modal [title]="title" (close)="closeModal()">
+
         @for (field of customerFields; track field) {
-        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" width="100%"></app-input>
-        }
+        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" width="100%"></app-input>}
+
         <div class="flex justify-center">
             <app-main-button label="Save"></app-main-button>
         </div>
     </app-modal>
     }
+
+
     <app-management-bar (add)="openModal()" [title]="title"></app-management-bar>
+
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
             <thead>

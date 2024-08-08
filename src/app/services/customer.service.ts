@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Customer, CustomerResults } from '../interfaces/Customer';
 import { Observable } from 'rxjs';
-import { Customer, CustomerResults } from '../interfaces/customer';
 
 @Injectable({
     providedIn: 'root'
@@ -19,5 +19,4 @@ export class CustomerService {
     saveCustomer(customer: Customer): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveCustomer`, customer);
     }
-
 }

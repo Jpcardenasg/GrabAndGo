@@ -8,6 +8,7 @@ import { OrderManagementComponent } from './pages/admin-page/order-management/or
 import { PaymentManagementComponent } from './pages/admin-page/payment-management/payment-management.component';
 import { EmployeeManagementComponent } from './pages/admin-page/employee-management/employee-management.component';
 import { EntityManagementComponent } from './pages/admin-page/entity-management/entity-management.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -23,6 +24,8 @@ export const routes: Routes = [
             { path: 'entities', component: EntityManagementComponent, data: { title: 'Entity' } },
         ]
     },
+    { path: 'aboutUs', component: AboutUsComponent },
+
 
 
 ];
