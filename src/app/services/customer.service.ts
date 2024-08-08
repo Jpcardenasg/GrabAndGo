@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Customer, CustomerResults } from '../interfaces/Customer';
 import { Observable } from 'rxjs';
@@ -7,9 +8,8 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class CustomerService {
-
-    private readonly apiUrl = 'http://localhost:8080/api/customer';
-
+    private readonly apiUrl = `${environment.apiUrl}/customer`;
+    
     constructor(private http: HttpClient) { }
 
     getCustomerList(): Observable<CustomerResults> {

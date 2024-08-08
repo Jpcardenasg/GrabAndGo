@@ -27,7 +27,7 @@ export interface PaymentMethod {
 }
 
 export interface PaymentMethodResults {
-    payments: Payment[];
+    paymentMethods: PaymentMethod[];
 }
 
 export interface PaymentMethodField {
