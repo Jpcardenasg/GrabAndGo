@@ -1,17 +1,20 @@
 import { City } from "./LocationModels";
-import { Phone } from "./Phone";
+import { CustomerContact } from "./CustomerContact";
+import { Employee } from "./Employee";
+import { Order } from "./Order";   
+import { User } from "./User";
 
 export interface Customer {
-    idNumber: string;
-    username: string;
-    password: string;
+    id: string;
     name: string;
     lastName: string;
     address: string;
     postalCode: number;
-    telephone: number;
     city: City;
-    phone: Phone;
+    customerContact: CustomerContact;
+    employee: Employee;
+    order: Order;
+    user: User;
 }
 
 export interface CustomerResults {

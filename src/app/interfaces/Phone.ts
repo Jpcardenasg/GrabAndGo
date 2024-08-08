@@ -3,6 +3,18 @@ export interface PhoneType {
     name: string;
 }
 
+export interface PhoneTypeResults {
+    phoneTypes: PhoneType[];
+}
+
+export interface PhoneTypeField {
+    header: string;
+    name: string;
+    type: string;
+}
+
+// Phone
+
 export interface Phone {
     id: number;
     prefix: number;
@@ -20,12 +32,3 @@ export interface PhoneField {
     type: string;
 }
 
-export interface PhoneTypeResults {
-    phoneTypes: PhoneType[];
-}
-
-export interface PhoneTypeField {
-    header: string;
-    name: string;
-    type: string;
-}

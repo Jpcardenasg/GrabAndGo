@@ -8,22 +8,25 @@ export interface Payment {
     paymentMethod: PaymentMethod;
 }
 
+export interface PaymentResults {
+    payments: Payment[];
+}
+
+
+export interface PaymentField {
+    header: string;
+    name: string;
+    type: string;
+}
+
+// PaymentMethod
+
 export interface PaymentMethod {
     id: number;
     name: string;
 }
 export interface PaymentMethodResults {
     payments: Payment[];
-}
-
-export interface PaymentResults {
-    payments: Payment[];
-}
-
-export interface PaymentField {
-    header: string;
-    name: string;
-    type: string;
 }
 
 export interface PaymentMethodField {

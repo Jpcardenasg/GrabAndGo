@@ -3,3 +3,12 @@ export interface OrderStatus {
     name: string;
 }
 
+export interface OrderStatusResults {
+    OrderStatuses: OrderStatus[];
+}
+
+export interface OrderStatusField {
+    header: string;
+    name: string;
+    type: string;
+}
