@@ -11,8 +11,7 @@ import { MainButtonComponent } from '../../../components/ui/main-button/main-but
 @Component({
     selector: 'app-customer-management',
     standalone: true,
-    imports: [AsyncPipe, ManagementBarComponent,
-        ModalComponent, InputComponent, MainButtonComponent],
+    imports: [AsyncPipe, ManagementBarComponent, ModalComponent, InputComponent, MainButtonComponent],
     templateUrl: './customer-management.component.html',
     styleUrl: './customer-management.component.css'
 })

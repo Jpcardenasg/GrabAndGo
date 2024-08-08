@@ -1,32 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ManagementBarComponent } from '../../../components/management-bar/management-bar.component';
 import { ModalComponent } from '../../../components/modal/modal.component';
 import { InputComponent } from '../../../components/ui/input/input.component';
-
-interface Product {
-    name: string;
-    dimensions: string;
-    gamma: string;
-    description: string;
-    supplier: string;
-    stock: number;
-    sellPrice: number;
-    supplierPrice: number;
-}
+import { PaymentField, PaymentResults } from '../../../interfaces/Payment';
+import { PaymentService } from '../../../services/payment.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { MainButtonComponent } from '../../../components/ui/main-button/main-button.component';
 
 @Component({
     selector: 'app-payment-management',
     standalone: true,
-    imports: [ManagementBarComponent, ModalComponent, InputComponent],
+    imports: [AsyncPipe, ManagementBarComponent, ModalComponent, InputComponent, MainButtonComponent],
     templateUrl: './payment-management.component.html',
     styleUrl: './payment-management.component.css'
 })
-export class PaymentManagementComponent {
+export class PaymentManagementComponent implements OnInit {
     @Input() title?: string;
 
-    products: Product[] = [
-        { name: 'Producto 1', dimensions: 'Regular', gamma: 'No sé', description: 'Ok', supplier: 'Angelinic', stock: 346, sellPrice: 3400, supplierPrice: 1400 }
-    ];
+    public paymentList$!: Observable<PaymentResults>;
+    constructor(private service: PaymentService) { };
+
+    ngOnInit(): void {
+        this.paymentList$ = this.service.getPaymentList();
+    }
 
     isModalOpen = false;
 
@@ -38,4 +35,11 @@ export class PaymentManagementComponent {
         this.isModalOpen = false;
     }
 
+    paymentFields: PaymentField[] = [
+        { header: "Payment ID", name: "id", type: "number" },
+        { header: "Date", name: "date", type: "string" },
+        { header: "Total", name: "total", type: "number" },
+        { header: "Customer", name: "customerPayment", type: "string" },
+        { header: "Payment Method", name: "paymentMethod", type: "string" }
+    ];
 }

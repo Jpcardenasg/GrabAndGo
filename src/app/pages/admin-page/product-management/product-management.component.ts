@@ -39,11 +39,11 @@ export class ProductManagementComponent implements OnInit {
     productFields: ProductField[] = [
         { header: "ID", type: "number", name: "productId" },
         { header: "Name", type: "string", name: "name" },
-        { header: "Dimensions", type: "string", name: "dimensions" },
+        // { header: "Dimensions", type: "string", name: "dimensions" },
         { header: "Gamma", type: "string", name: "gamma" },
         { header: "Description", type: "string", name: "description" },
         { header: "Supplier", type: "string", name: "supplier" },
-        { header: "Stock Quantity", type: "number", name: "stock" },
+        // { header: "Stock Quantity", type: "number", name: "stock" },
         { header: "Sell Price", type: "number", name: "sellPrice" },
         { header: "Supplier Price", type: "number", name: "supplierPrice" }
     ];
