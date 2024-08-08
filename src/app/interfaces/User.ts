@@ -5,6 +5,7 @@ export interface User {
     id: Number;
     username: String;
     password: string;
+    role: String;
     employee: Employee;
     customer: Customer;
 }
