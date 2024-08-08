@@ -17,3 +17,9 @@ export interface Customer {
 export interface CustomerResults {
     customers: Customer[];
 }
+
+export interface CustomerField {
+    header: string;
+    name: string;
+    type: string;
+}

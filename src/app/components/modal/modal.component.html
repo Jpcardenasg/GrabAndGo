@@ -1,0 +1,11 @@
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="relative bg-body p-6 rounded-lg shadow-lg max-w-lg w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <button (click)="closeModal()" class="absolute top-2 right-3 text-2xl text-gray-400">
+            <i class='bx bx-x'></i>
+        </button>
+        <h2 class="text-center text-mainpurple text-xl font-bold mb-4">{{title?.toUpperCase()}}</h2>
+        <div class="overflow-auto flex-1">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

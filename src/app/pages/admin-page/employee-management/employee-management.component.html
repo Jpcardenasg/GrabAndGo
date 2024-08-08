@@ -1,5 +1,10 @@
 <main class="p-4">
-    <app-management-bar [title]="title"></app-management-bar>
+    @if (isModalOpen) {
+    <app-modal [title]="title" (close)="closeModal()">
+        <app-input inputId="customerName" label="Name" type="text" width="100%"></app-input>
+    </app-modal>
+    }
+    <app-management-bar (add)="openModal()" [title]="title"></app-management-bar>
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
             <thead>

@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { ManagementBarComponent } from '../../../components/management-bar/management-bar.component';
 import { Order } from '../../../interfaces/order';
+import { ModalComponent } from '../../../components/modal/modal.component';
+import { InputComponent } from '../../../components/ui/input/input.component';
 
 @Component({
     selector: 'app-order-management',
     standalone: true,
-    imports: [ManagementBarComponent],
+    imports: [ManagementBarComponent, ModalComponent, InputComponent],
     templateUrl: './order-management.component.html',
     styleUrl: './order-management.component.css'
 })
@@ -14,19 +16,13 @@ export class OrderManagementComponent {
 
     orders: Order[] = [];
 
+    isModalOpen = false;
 
-    addProduct() {
-        console.log('Add');
-
+    openModal() {
+        this.isModalOpen = true;
     }
 
-    deleteProduct() {
-        console.log('Del');
-
-    }
-
-    editProduct() {
-        console.log('Edit');
-
+    closeModal() {
+        this.isModalOpen = false;
     }
 }
