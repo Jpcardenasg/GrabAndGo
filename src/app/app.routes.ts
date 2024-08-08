@@ -9,6 +9,7 @@ import { PaymentManagementComponent } from './pages/admin-page/payment-managemen
 import { EmployeeManagementComponent } from './pages/admin-page/employee-management/employee-management.component';
 import { EntityManagementComponent } from './pages/admin-page/entity-management/entity-management.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AdminHomeComponent } from './pages/admin-page/admin-home/admin-home.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'customer', component: CustomerPageComponent },
     {
         path: 'admin', component: AdminPageComponent, children: [
+            { path: '', component: AdminHomeComponent },
             { path: 'products', component: ProductManagementComponent, data: { title: 'Product' } },
             { path: 'customers', component: CustomerManagementComponent, data: { title: 'Customer' } },
             { path: 'orders', component: OrderManagementComponent, data: { title: 'Order' } },

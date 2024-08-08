@@ -25,6 +25,7 @@ export interface PaymentMethod {
     id: number;
     name: string;
 }
+
 export interface PaymentMethodResults {
     payments: Payment[];
 }

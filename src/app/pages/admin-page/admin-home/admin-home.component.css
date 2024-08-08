@@ -1,0 +1,16 @@
+.icon i {
+    font-size: 140px;
+    background: linear-gradient(180deg, #BB96FD 0%, #F764B6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.border-bottom {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-width: 0 0 2rem 0;
+    border-style: solid;
+    border-color: currentColor;
+}
