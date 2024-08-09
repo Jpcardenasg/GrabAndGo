@@ -1,47 +1,51 @@
 <main class="p-4">
     @if (isModalOpen) {
     <app-modal [title]="title" (close)="closeModal()">
-        <app-input inputId="customerName" label="Name" type="text" width="100%"></app-input>
+
+        @for (field of employeeFields; track field) {
+        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" width="100%"></app-input>}
+
+        <div class="flex justify-center">
+            <app-main-button label="Save"></app-main-button>
+        </div>
     </app-modal>
     }
+
+
     <app-management-bar (add)="openModal()" [title]="title"></app-management-bar>
+
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
             <thead>
                 <tr>
+                    @for (field of employeeFields; track field) {
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Name</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Dimensions</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Gamma
+                        {{ field.header }}
                     </th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Description</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Supplier</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Stock Quantity</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Sell Price</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Supplier Price</th>
+                    }
                 </tr>
             </thead>
+
+            @if(employeeList$ | async; as employeeResults) {
             <tbody class="bg-white divide-y divide-gray-200">
-                @for (product of products; track product.name) {
+                @for (employee of employeeResults.employees; track employee.id) {
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.dimensions }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.gamma }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.description }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplier }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.stock }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.sellPrice }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplierPrice }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.lastName1 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.lastName2 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.email }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.extencion }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.position }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.telephone }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.boss.id}}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.office.id}}</td>
+                    
                 </tr>
                 }
             </tbody>
+            }
+
         </table>
     </div>
 </main>

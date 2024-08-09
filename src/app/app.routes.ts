@@ -26,7 +26,7 @@ export const routes: Routes = [
             { path: 'entities', component: EntityManagementComponent, data: { title: 'Entity' } },
         ]
     },
-    { path: 'aboutUs', component: AboutUsComponent },
+    { path: 'aboutUs', component: AboutUsComponent }
 
 
 

@@ -18,3 +18,23 @@ export interface ProductField {
     name: string;
     type: string;
 }
+
+// ProductGamma
+
+export interface ProductGamma {
+    id: number;
+    textDescription: string;
+    htmlDescription: string;
+    image: string;
+}
+
+
+export interface ProductGammaResults {
+    productsGamma: ProductGamma[];
+}
+
+export interface ProductGammaField {
+    header: string;
+    name: string;
+    type: string;
+}
