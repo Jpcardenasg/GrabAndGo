@@ -36,7 +36,7 @@ export class EmployeeManagementComponent implements OnInit {
         this.isModalOpen = false;
     }
 
-    customerFields: EmployeeField[] = [
+    employeeFields: EmployeeField[] = [
         { header: "ID", type: "number", name: "id" },
         { header: "Name", type: "string", name: "name" },
         { header: "Last Name 1", type: "string", name: "lastName1" },
