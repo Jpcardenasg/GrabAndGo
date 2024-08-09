@@ -163,7 +163,7 @@
     color: #3a3838;
 }
 
-#form_input .type {
+.form_input .type {
     width: 330px;
     height: 48px;
     color: #909090;
@@ -187,7 +187,7 @@
 }
 
 
-#form_input .type input {
+.form_input .type input {
     width: 100%;
     height: 100%;
     padding: 0 10px;
@@ -197,11 +197,11 @@
     background-color: transparent;
 }
 
-#form_input .type input::placeholder {
+.form_input .type input::placeholder {
     color: #909090;
 }
 
-#form_input .forgot {
+.form_input .forgot {
     margin-bottom: 20px;
     font-weight: 500;
 }

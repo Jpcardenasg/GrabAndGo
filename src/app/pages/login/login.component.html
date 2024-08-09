@@ -6,20 +6,40 @@
                 <img src="gnglogo.svg" alt="Grab and Go logo">
                 <h3 class="mt-4">Sign In</h3>
                 <span>or use your account</span>
-                <form action="#" id="form_input" (submit)="onLogin()">
-                    <app-input type="text" inputId="username" label="Username"></app-input>
-                    <app-input type="password" inputId="password" label="Password"></app-input>
+
+                <form class="form_input" (submit)="onLogin()" [formGroup]="signInForm">
+                    <div class="h-12 relative flex rounded-xl my-8 w-[330px]">
+                        <input id="signInUsername" type="text" name="username" required formControlName="username"
+                            class="peer w-full outline-none px-4 text-base rounded-xl bg-body focus:bg-white border focus:shadow-md" />
+
+                        <label for="signInUsername"
+                            class="absolute top-1/2 left-4 px-2 rounded bg-body text-input peer-focus:top-0 peer-focus:left-3 font-light text-base peer-focus:bg-white peer-focus:text-sm peer-focus:text-mainpink peer-valid:-top-0 peer-valid:left-3 peer-valid:text-sm peer-valid:text-mainpink translate-y-[-50%] duration-150">
+                            Username
+                        </label>
+                    </div>
+                    <div class="h-12 relative flex rounded-xl my-8 w-[330px]">
+                        <input id="signInPassword" type="password" name="password" required formControlName="password"
+                            class="peer w-full outline-none px-4 text-base rounded-xl bg-body focus:bg-white border focus:shadow-md" />
+
+                        <label for="signInPassword"
+                            class="absolute top-1/2 left-4 px-2 rounded bg-body text-input peer-focus:top-0 peer-focus:left-3 font-light text-base peer-focus:bg-white peer-focus:text-sm peer-focus:text-mainpink peer-valid:-top-0 peer-valid:left-3 peer-valid:text-sm peer-valid:text-mainpink translate-y-[-50%] duration-150">
+                            Password
+                        </label>
+                    </div>
+
                     <div class="forgot">
                         <span>Forgot your password?</span>
                     </div>
-                    <button class="btn bkg">Sign In</button>
+                    <button type="submit" class="btn bkg" [disabled]="!signInForm.valid">Sign
+                        In</button>
                 </form>
+
             </div>
 
             <div class="form sign_up py-2 max-h-screen">
                 <h3>Sign Up</h3>
                 <span>or use your email for register</span>
-                <form action="#" id="form_input" class="overflow-y-auto px-4">
+                <form action="#" id="form_signUp" class="form_input overflow-y-auto px-4">
 
                     <app-input type="text" inputId="nameSignUp" label="Name"></app-input>
                     <app-input type="text" inputId="lastNameSignUp" label="Last Name"></app-input>

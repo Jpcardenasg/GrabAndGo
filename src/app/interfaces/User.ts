@@ -2,12 +2,12 @@ import { Employee } from "./Employee";
 import { Customer } from "./Customer";
 
 export interface User {
-    id: Number;
-    username: String;
+    id: number;
+    username: string;
     password: string;
-    role: String;
-    employee: Employee;
-    customer: Customer;
+    role: string;
+    employee: Employee | null;
+    customer: Customer | null;
 }
 
 export interface UserResults {
@@ -20,3 +20,13 @@ export interface UserField {
     type: string;
 }
 
+export interface UserLogin {
+    username: string;
+    password: string;
+}
+
+export interface UserLogged {
+    username: string;
+    role: string;
+    token: string;
+}
