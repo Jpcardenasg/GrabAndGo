@@ -7,5 +7,8 @@
         <div class="overflow-auto flex-1">
             <ng-content></ng-content>
         </div>
+        <div class="flex justify-center mt-2">
+            <app-main-button [label]="label" (click)="saveData()"></app-main-button>
+        </div>
     </div>
 </div>

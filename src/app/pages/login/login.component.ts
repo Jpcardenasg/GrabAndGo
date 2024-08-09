@@ -38,10 +38,10 @@ export class LoginComponent implements OnInit {
         const userLogin = this.signInForm.value;
 
         this._loginSvc.getAuthentication(userLogin).subscribe(
-            (userAuthenticated: UserLogged) => {
-                if (userAuthenticated.role === 'ADMIN') {
+            (response: UserLogged) => {
+                if (response.role === 'ADMIN') {
                     this._router.navigate(['/admin']);
-                } else if (userAuthenticated.role === 'CUSTOMER') {
+                } else if (response.role === 'CUSTOMER') {
                     this._router.navigate(['/customer']);
                 } else {
                 }

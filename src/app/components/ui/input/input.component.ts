@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'app-input',
@@ -14,6 +14,13 @@ export class InputComponent {
     @Input() name?: string;
     @Input() inputId?: string;
     @Input() width?: string;
+
+    @Output() valueChange = new EventEmitter<string>();
+
+    onInput(event: Event): void {
+        const input = event.target as HTMLInputElement;
+        this.valueChange.emit(input.value);
+    }
 
     setWidth(): string {
         if (this.width) {

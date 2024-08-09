@@ -1,11 +1,8 @@
 <div class="h-12 relative flex rounded-xl my-8" [style.width]="setWidth()">
-
-    <input [id]="inputId" [type]="type" [name]="name ? name : inputId" required
+    <input [id]="inputId" [type]="type" [name]="name ? name : inputId" (input)="onInput($event)" required
         class="peer w-full outline-none px-4 text-base rounded-xl bg-body focus:bg-white border focus:shadow-md" />
-
     <label [for]="inputId"
         class="absolute top-1/2 left-4 px-2 rounded bg-body text-input peer-focus:top-0 peer-focus:left-3 font-light text-base peer-focus:bg-white peer-focus:text-sm peer-focus:text-mainpink peer-valid:-top-0 peer-valid:left-3 peer-valid:text-sm peer-valid:text-mainpink translate-y-[-50%] duration-150">
         {{label}}
     </label>
-
 </div>
