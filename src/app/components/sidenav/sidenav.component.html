@@ -16,19 +16,34 @@
         <ul class="flex flex-col items-center p-4">
             @for (data of navData; track $index) {
             <li class="sidenav-nav-item w-full mb-2 cursor-pointer">
-                <a [routerLink]="data.routeLink" class="flex items-center h-12 gradient-hover">
+                <a [routerLink]="data.routeLink" class="flex items-center h-12 gradient-hover ">
                     <i class="text-center w-8 min-w-2 my-2 text-2xl pl-3" [class]="data.icon"></i>
                     @if (!isCollapsed) {<span class="sidenav-content ml-6 text-normal">{{data.label}}</span>}
+                    @if (data.label == "More") {
+                        <button (click)="toggleEntityList()" class="buttonHideMore"></button>
+                    }
                 </a>
+                    @if (!isEntityListVisible && data.label == "More"){
+                        <ul class="entity-list bg-white shadow-md rounded-md py-2 snap-y overflow-y-auto max-h-48 ">
+                            @for (entity of entities; track $index) {
+                            <li class="entity-list-item cursor-pointer hover:bg-gray-100 transition duration-1 00 ease-in-out">
+                                @if (!isEntityListVisible) {
+                                <a class="block px-2 py-1  gradient-hover relative">{{entity.label}}</a>
+                                }
+                            </li>
+                            }
+                        </ul>
+                    }
             </li>
             }
         </ul>
     </div>
 
     <footer class="flex justify-end p-4">
-        @if (!isCollapsed) {
+        @if (!isCollapsed){
         <button (click)="closeSidenav()" class="sidenav-content text-xl text-gray-400"><i
                 class='bx bx-arrow-to-left'></i></button>
+        
         }
     </footer>
 </div>

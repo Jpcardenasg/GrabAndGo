@@ -1,6 +1,6 @@
 export const sideNavbarData = [
     {
-        routeLink: "/admin",
+        routeLink: "admin",
         icon: "bx bx-home",
         label: "Home"
     },
@@ -35,3 +35,67 @@ export const sideNavbarData = [
         label: "More"
     },
 ];
+
+
+export const entityData = [
+    {
+        label: "Branch"
+    }, 
+    {
+        label: "City"
+    },
+    {
+        label: "Country"
+    },
+    {
+        label: "Customer"
+    },
+    {
+        label: "Customer Contact"
+    },
+    {
+        label: "Employee"
+    },
+    {
+        label: "Inventory"
+    },
+    {
+        label: "Office"
+    },
+    {
+        label: "Order"
+    },
+    {
+        label: "Order Detail"
+    },
+    {
+        label: "Order Status"
+    },
+    {
+        label: "Payment"
+    },
+    {
+        label: "Payment Method"
+    },
+    {
+        label: "Phone"
+    },
+    {
+        label: "Phone Type"
+    },
+    {
+        label: "Product"
+    },
+    {
+        label: "Product Gamma"
+    },
+    {
+        label: "Region"
+    },
+    {
+        label: "Supplier"
+    },
+    {
+        label: "Supplier Contact"
+    }
+]

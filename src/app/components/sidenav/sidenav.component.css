@@ -28,3 +28,12 @@
     outline: 1px solid #E0E3E6;
     border-radius: 8px;
 }
+
+.buttonHideMore{
+    left: 0;
+    right: 0;
+    height: inherit;
+    width: inherit;
+    background: transparent;
+    position: absolute;
+} 

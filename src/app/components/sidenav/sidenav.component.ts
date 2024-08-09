@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { sideNavbarData } from './nav-data';
+import { sideNavbarData, entityData } from './nav-data';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -12,14 +12,40 @@ import { RouterLink } from '@angular/router';
 export class SideNavComponent {
 
 	isCollapsed = false;
+	isEntityListVisible = false;
 	navData = sideNavbarData;
+	entities = entityData;
 
 	closeSidenav(): void {
 		this.isCollapsed = true;
+		if(!this.isEntityListVisible) {
+			this.isEntityListVisible = true;
+		}
 	}
 
 	toggleSidenav(): void {
 		this.isCollapsed = !this.isCollapsed;
 	}
+
+	closeEntity(): void {
+		this.isEntityListVisible = true;
+	}
+
+	toggleEntityList(): void {
+		
+		
+		if (this.isCollapsed && this.isEntityListVisible) {
+			this.isCollapsed = false;
+		}
+		
+		
+		this.isEntityListVisible = !this.isEntityListVisible;
+		
+		if (!this.isCollapsed && this.isEntityListVisible) {
+			this.isCollapsed = true;
+		}
+		
+	}
+	
 
 }
