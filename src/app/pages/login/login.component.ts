@@ -2,8 +2,8 @@ import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core'
 import { Router } from '@angular/router';
 import { InputComponent } from '../../components/ui/input/input.component';
 import { SelectComponent } from '../../components/ui/select/select.component';
-import { LoginService } from '../../services/login.service';
-import { UserLogged, UserLogin } from '../../interfaces/User';
+import { AuthService } from '../../services/auth.service';
+import { UserLogged } from '../../interfaces/User';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
     private readonly _fb = inject(FormBuilder);
     private readonly _router = inject(Router);
-    private readonly _loginSvc = inject(LoginService);
+    private readonly _authSvc = inject(AuthService);
 
     ngOnInit(): void {
         this._buildForm();
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
         const userLogin = this.signInForm.value;
 
-        this._loginSvc.getAuthentication(userLogin).subscribe(
+        this._authSvc.getAuthentication(userLogin).subscribe(
             (response: UserLogged) => {
                 if (response.role === 'ADMIN') {
                     this._router.navigate(['/admin']);

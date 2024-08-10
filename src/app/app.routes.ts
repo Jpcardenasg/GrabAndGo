@@ -10,13 +10,15 @@ import { EmployeeManagementComponent } from './pages/admin-page/employee-managem
 import { EntityManagementComponent } from './pages/admin-page/entity-management/entity-management.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AdminHomeComponent } from './pages/admin-page/admin-home/admin-home.component';
+import { AuthGuard } from '../core/guards/auth.guard';
+import { AuthenticatedGuard } from '../core/guards/authenticated.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'customer', component: CustomerPageComponent },
+    { path: 'login', component: LoginComponent, canActivate: [AuthenticatedGuard] },
+    { path: 'customer', component: CustomerPageComponent, canActivate: [AuthGuard], data: { role: 'CUSTOMER' } },
     {
-        path: 'admin', component: AdminPageComponent, children: [
+        path: 'admin', component: AdminPageComponent, canActivate: [AuthGuard], data: { role: 'ADMIN' }, children: [
             { path: '', component: AdminHomeComponent },
             { path: 'products', component: ProductManagementComponent, data: { title: 'Product' } },
             { path: 'customers', component: CustomerManagementComponent, data: { title: 'Customer' } },
@@ -26,8 +28,8 @@ export const routes: Routes = [
             { path: 'entities', component: EntityManagementComponent, data: { title: 'Entity' } },
         ]
     },
-    { path: 'aboutUs', component: AboutUsComponent }
+    { path: 'aboutUs', component: AboutUsComponent },
 
-
+    { path: '**', redirectTo: 'login' }
 
 ];
