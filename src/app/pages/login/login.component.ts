@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { InputComponent } from '../../components/ui/input/input.component';
 import { SelectComponent } from '../../components/ui/select/select.component';
 import { AuthService } from '../../services/auth.service';
-import { UserLogged } from '../../interfaces/User';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -33,22 +32,21 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    async onLogin() {
-
+    onLogin(): void {
         const userLogin = this.signInForm.value;
 
-        this._authSvc.getAuthentication(userLogin).subscribe(
-            (response: UserLogged) => {
-                if (response.role === 'ADMIN') {
+        this._authSvc.login(userLogin).subscribe({
+            next: (response) => {
+                const role = response.role;
+
+                if (role === 'ADMIN') {
                     this._router.navigate(['/admin']);
-                } else if (response.role === 'CUSTOMER') {
+                } else if (role === 'CUSTOMER') {
                     this._router.navigate(['/customer']);
-                } else {
                 }
             },
-            error => {
-                console.error('Error during login', error);
-            }
+            error: (err) => console.error('Login failed', err)
+        }
         );
 
     }

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class EmployeeService {
-    private readonly apiUrl = `${environment.apiUrl}/payment`;
+    private readonly apiUrl = `${environment.apiUrl}/employee`;
 
     constructor(private http: HttpClient) { }
 

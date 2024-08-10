@@ -17,7 +17,7 @@ export class AuthService {
     private readonly _router = inject(Router);
     private readonly _http = inject(HttpClient);
 
-    getAuthentication(user: UserLogin): Observable<UserLogged> {
+    login(user: UserLogin): Observable<UserLogged> {
         return this._http.post<UserLogged>(this._apiUrl, user).pipe(
             tap(response => {
                 if (response.token) {
