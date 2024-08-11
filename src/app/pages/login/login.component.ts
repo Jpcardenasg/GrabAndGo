@@ -4,11 +4,17 @@ import { InputComponent } from '../../components/ui/input/input.component';
 import { SelectComponent } from '../../components/ui/select/select.component';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CityService } from '../../services/city.service';
+import { CountryService } from '../../services/country.service';
+import { RegionService } from '../../services/region.service';
+import { Observable } from 'rxjs';
+import { CityResults, CountryResults, RegionResults } from '../../interfaces/LocationModels';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [InputComponent, SelectComponent, ReactiveFormsModule],
+    imports: [AsyncPipe, InputComponent, SelectComponent, ReactiveFormsModule],
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })
@@ -21,10 +27,21 @@ export class LoginComponent implements OnInit {
     private readonly _fb = inject(FormBuilder);
     private readonly _router = inject(Router);
     private readonly _authSvc = inject(AuthService);
+    private readonly _citySvc = inject(CityService);
+    private readonly _countrySvc = inject(CountryService);
+    private readonly _regionSvc = inject(RegionService);
+
+    public countryList$!: Observable<CountryResults>;
+    public regionList$!: Observable<RegionResults>;
+    public cityList$!: Observable<CityResults>;
+
 
     ngOnInit(): void {
         this._buildSignInForm();
         this._buildSignUpForm();
+        this.countryList$ = this._countrySvc.getCountryList();
+        this.regionList$ = this._regionSvc.getRegionList();
+        this.cityList$ = this._citySvc.getCityList();
     }
 
     private _buildSignInForm(): void {

@@ -1,9 +1,11 @@
+import { Supplier } from "./Supplier";
+
 export interface Product {
     id: number;
     name: string;
-    description: string;
-    supplier: string;
     gamma: string;
+    description: string;
+    supplier: Supplier;
     sellPrice: number;
     supplierPrice: number;
 }

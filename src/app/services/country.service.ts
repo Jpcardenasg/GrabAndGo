@@ -13,7 +13,7 @@ export class CountryService {
     constructor(private http: HttpClient) { }
 
     getCountryList(): Observable<CountryResults> {
-        return this.http.get<CountryResults>(`${this.apiUrl}/allcountries`);
+        return this.http.get<CountryResults>(`${this.apiUrl}/allCountries`);
     };
 
     saveCountry(country: Country): Observable<any> {

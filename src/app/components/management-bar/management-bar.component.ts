@@ -11,10 +11,15 @@ export class ManagementBarComponent {
     @Input() title?: string;
 
     @Output() add = new EventEmitter<void>();
+    @Output() edit = new EventEmitter<void>();
 
 
     addElement() {
         this.add.emit();
+    }
+
+    editElement() {
+        this.edit.emit();
     }
 
 }

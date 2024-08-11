@@ -13,7 +13,7 @@ export class CityService {
     constructor(private http: HttpClient) { }
 
     getCityList(): Observable<CityResults> {
-        return this.http.get<CityResults>(`${this.apiUrl}/allcities`);
+        return this.http.get<CityResults>(`${this.apiUrl}/allCities`);
     };
 
     saveCity(city: City): Observable<any> {

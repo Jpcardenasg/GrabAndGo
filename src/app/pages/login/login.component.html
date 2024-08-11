@@ -41,26 +41,40 @@
                                formControlName="address"></app-input>
 
                     <div class="flex justify-between my-8 h-12">
+                        @if ( countryList$ | async; as countryResults) {
                         <app-select selectId="country" name="country" label="Country" width="160px"
                                     formControlName="country">
                             <option value="" selected disabled>Country</option>
-                            <option value="colombia">Colombia</option>
-                            <option value="mexico">Mexico</option>
+
+                            @for (country of countryResults.countries; track country.id) {
+                            <option [value]="country">{{country}}</option>
+                            }
                         </app-select>
+                        }
+
+                        @if ( regionList$ | async; as regionResults) {
                         <app-select selectId="region" name="region" label="Region" width="160px"
                                     formControlName="region">
                             <option value="" selected disabled>Region</option>
-                            <option value="santander">Santander</option>
-                            <option value="jalisco">Jalisco</option>
+                            @for (region of regionResults.regions; track region.id) {
+                            <option [value]="region">{{region}}</option>
+                            }
                         </app-select>
+                        }
                     </div>
 
                     <div class="flex justify-between my-8 h-12">
+
+                        @if ( cityList$ | async; as cityResults) {
                         <app-select selectId="city" name="city" label="City" width="160px" formControlName="city">
                             <option value="" selected disabled>City</option>
-                            <option value="bucaramanga">Bucaramanga</option>
-                            <option value="guadalajara">Guadalajara</option>
+
+                            @for (city of cityResults.cities; track city.id) {
+                            <option [value]="city">{{city}}</option>
+                            }
                         </app-select>
+                        }
+
                         <div class="h-12 relative flex rounded-xl w-[160px]">
                             <input type="number" id="postalCode" formControlName="postalCode" required
                                    class="peer w-full outline-none px-4 text-base rounded-xl bg-body focus:bg-white border focus:shadow-md" />
@@ -70,13 +84,13 @@
                             </label>
                         </div>
                     </div>
-
-                    <button class="btn bkg">Sign Up</button>
+                    <button type="submit" class="btn bkg" [disabled]="!signUpForm.valid">Sign Up</button>
                 </form>
 
             </div>
 
         </div>
+
         <div class="overlay">
             <div class="page page_signIn">
                 <h3>Welcome Back!</h3>
@@ -89,5 +103,6 @@
                     <i class='bx bx-chevron-left'></i> Sign In</button>
             </div>
         </div>
+
     </div>
 </main>

@@ -22,9 +22,9 @@ export class InputComponent implements ControlValueAccessor {
     @Input() name?: string;
     @Input() inputId?: string;
     @Input() width?: string;
+    @Input() value: string = '';
 
     @Output() valueChange = new EventEmitter<string>();
-    value: string = '';
 
     private onChange = (value: string) => { };
     private onTouched = () => { };

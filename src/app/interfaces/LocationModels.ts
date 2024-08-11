@@ -4,7 +4,7 @@ export interface Country {
 }
 
 export interface CountryResults {
-    Countries: Country[];
+    countries: Country[];
 }
 
 export interface CountryField {
@@ -20,7 +20,7 @@ export interface Region {
 }
 
 export interface RegionResults {
-    Regiones: Region[];
+    regions: Region[];
 }
 
 export interface RegionField {
@@ -36,7 +36,7 @@ export interface City {
 }
 
 export interface CityResults {
-    Cities: City[];
+    cities: City[];
 }
 
 export interface CityField {
