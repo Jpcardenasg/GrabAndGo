@@ -1,7 +1,7 @@
 import { City } from "./LocationModels";
 import { CustomerContact } from "./CustomerContact";
 import { Employee } from "./Employee";
-import { Order } from "./Order";   
+import { Order } from "./Order";
 import { User } from "./User";
 
 export interface Customer {
@@ -17,9 +17,8 @@ export interface Customer {
     user: User;
 }
 
-export interface CustomerResults {
-    customers: Customer[];
-}
+export type CustomerResults = Customer[];
+
 
 export interface CustomerField {
     header: string;

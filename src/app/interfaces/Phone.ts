@@ -3,9 +3,7 @@ export interface PhoneType {
     name: string;
 }
 
-export interface PhoneTypeResults {
-    phoneTypes: PhoneType[];
-}
+export type PhoneTypeResults = PhoneType[];
 
 export interface PhoneTypeField {
     header: string;
@@ -22,9 +20,7 @@ export interface Phone {
     phoneType: PhoneType;
 }
 
-export interface PhoneResults {
-    phones: Phone[];
-}
+export type PhoneResults = Phone[];
 
 export interface PhoneField {
     header: string;

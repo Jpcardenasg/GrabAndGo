@@ -28,10 +28,7 @@ export interface ProductGamma {
     image: string;
 }
 
-
-export interface ProductGammaResults {
-    productsGamma: ProductGamma[];
-}
+export type ProductGammaResults = ProductGamma[];
 
 export interface ProductGammaField {
     header: string;

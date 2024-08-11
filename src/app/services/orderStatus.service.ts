@@ -15,10 +15,22 @@ export class OrderStatusService {
 
     getOrderStatusList(): Observable<OrderStatusResults> {
         return this.http.get<OrderStatusResults>(`${this.apiUrl}/allOrderStatuses`);
-    };
+    }
+
+    getOrderStatus(id: number): Observable<OrderStatus> {
+        return this.http.get<OrderStatus>(`${this.apiUrl}/getOrderStatus/${id}`);
+    }
+
+    deleteOrderStatus(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteOrderStatus/${id}`);
+    }
+
+    updateOrderStatus(id: number, orderStatus: OrderStatus): Observable<OrderStatus> {
+        return this.http.put<OrderStatus>(`${this.apiUrl}/updateOrderStatus/${id}`, orderStatus);
+    }
 
     saveOrderStatus(orderStatus: OrderStatus): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveOrderStatus`, orderStatus);
 
-    };
+    }
 }

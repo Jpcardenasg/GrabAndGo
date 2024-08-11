@@ -10,9 +10,7 @@ export interface OrderDetail {
     order: Order;
 }
 
-export interface OrderDetailResults {
-    orderDetails: OrderDetail[];
-}
+export type OrderDetailResults = OrderDetail[];
 
 export interface OrderDetailField {
     header: string;

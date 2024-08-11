@@ -16,6 +16,18 @@ export class PaymentService {
         return this.http.get<PaymentResults>(`${this.apiUrl}/allPayments`);
     };
 
+    getPayment(id: number): Observable<Payment> {
+        return this.http.get<Payment>(`${this.apiUrl}/getPayment/${id}`);
+    }
+
+    deletePayment(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deletePayment/${id}`);
+    }
+
+    updatePayment(id: number, payment: Payment): Observable<Payment> {
+        return this.http.put<Payment>(`${this.apiUrl}/updatePayment/${id}`, payment);
+    }
+
     savePayment(payment: Payment): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/savePayment`, payment);
 

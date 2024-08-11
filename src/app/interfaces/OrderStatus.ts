@@ -3,9 +3,8 @@ export interface OrderStatus {
     name: string;
 }
 
-export interface OrderStatusResults {
-    OrderStatuses: OrderStatus[];
-}
+export type OrderStatusResults = OrderStatus[];
+
 
 export interface OrderStatusField {
     header: string;

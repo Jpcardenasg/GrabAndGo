@@ -8,9 +8,8 @@ export interface CustomerContact {
     phone: Phone;
 }
 
-export interface CustomerContactResults {
-    customersContact: CustomerContact[];
-}
+export type CustomerContactResults = CustomerContact[];
+
 
 export interface CustomerContactField {
     header: string;

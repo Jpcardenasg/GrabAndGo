@@ -15,9 +15,7 @@ export interface Employee {
     office: Office;
 }
 
-export interface EmployeeResults {
-    employees: Employee[];
-}
+export type EmployeeResults = Employee[];
 
 export interface EmployeeField {
     header: string;

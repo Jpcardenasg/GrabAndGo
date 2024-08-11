@@ -11,9 +11,8 @@ export interface Order {
 }
 
 
-export interface OrderResults {
-    orders: Order[];
-}
+export type OrderResults = Order[];
+
 
 export interface OrderField {
     header: string;

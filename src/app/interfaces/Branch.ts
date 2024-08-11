@@ -8,9 +8,8 @@ export interface Branch {
     city: City;
 }
 
-export interface BranchResults {
-    branches: Branch[];
-}
+export type BranchResults = Branch[];
+
 
 export interface BranchField {
     header: string;

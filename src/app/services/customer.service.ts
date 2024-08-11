@@ -9,12 +9,24 @@ import { Observable } from 'rxjs';
 })
 export class CustomerService {
     private readonly apiUrl = `${environment.apiUrl}/customer`;
-    
+
     constructor(private http: HttpClient) { }
 
     getCustomerList(): Observable<CustomerResults> {
         return this.http.get<CustomerResults>(`${this.apiUrl}/allCustomers`);
-    };
+    }
+
+    getCustomer(id: string): Observable<Customer> {
+        return this.http.get<Customer>(`${this.apiUrl}/getCustomer/${id}`);
+    }
+
+    deleteCustomer(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteCustomer/${id}`);
+    }
+
+    updateCustomer(id: string, customer: Customer): Observable<Customer> {
+        return this.http.put<Customer>(`${this.apiUrl}/updateCustomer/${id}`, customer);
+    }
 
     saveCustomer(customer: Customer): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveCustomer`, customer);

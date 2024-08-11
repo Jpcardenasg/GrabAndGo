@@ -19,7 +19,7 @@ export class ProductManagementComponent implements OnInit {
 
     @Input() title?: string;
 
-    public productList$!: Observable<Product[]>;
+    public productList$!: Observable<ProductResults>;
     public selectedProduct: Product | null = null;
     public modalLabel: string = "Save";
 

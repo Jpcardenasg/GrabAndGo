@@ -13,11 +13,23 @@ export class InventoryService {
     constructor(private http: HttpClient) { }
 
     getInventoryList(): Observable<InventoryResults> {
-        return this.http.get<InventoryResults>(`${this.apiUrl}/allinventories`);
-    };
+        return this.http.get<InventoryResults>(`${this.apiUrl}/allInventories`);
+    }
+
+    getInventory(id: number): Observable<Inventory> {
+        return this.http.get<Inventory>(`${this.apiUrl}/getInventory/${id}`);
+    }
+
+    deleteInventory(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteInventory/${id}`);
+    }
+
+    updateInventory(id: number, inventory: Inventory): Observable<Inventory> {
+        return this.http.put<Inventory>(`${this.apiUrl}/updateInventory/${id}`, inventory);
+    }
 
     saveInventory(inventory: Inventory): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveInventory`, inventory);
 
-    };
+    }
 }

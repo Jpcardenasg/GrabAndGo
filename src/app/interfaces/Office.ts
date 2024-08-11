@@ -8,9 +8,8 @@ export interface Office {
     city: City;
 }
 
-export interface OfficeResults {
-    offices: Office[];
-}
+export type OfficeResults = Office[];
+
 
 export interface OfficeField {
     header: string;

@@ -3,9 +3,8 @@ export interface Country {
     name: string;
 }
 
-export interface CountryResults {
-    countries: Country[];
-}
+export type CountryResults = Country[];
+
 
 export interface CountryField {
     header: string;
@@ -19,9 +18,8 @@ export interface Region {
     country: Country;
 }
 
-export interface RegionResults {
-    regions: Region[];
-}
+export type RegionResults = Region[];
+
 
 export interface RegionField {
     header: string;
@@ -35,9 +33,8 @@ export interface City {
     region: Region;
 }
 
-export interface CityResults {
-    cities: City[];
-}
+export type CityResults = City[];
+
 
 export interface CityField {
     header: string;

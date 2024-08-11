@@ -14,10 +14,23 @@ export class EmployeeService {
 
     getEmployeeList(): Observable<EmployeeResults> {
         return this.http.get<EmployeeResults>(`${this.apiUrl}/allEmployees`);
-    };
+    }
+
+    getEmployee(id: string): Observable<Employee> {
+        return this.http.get<Employee>(`${this.apiUrl}/getEmployee/${id}`);
+    }
+
+    deleteEmployee(id: string): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteEmployee/${id}`);
+    }
+
+    updateEmployee(id: string, employee: Employee): Observable<Employee> {
+        return this.http.put<Employee>(`${this.apiUrl}/updateEmployee/${id}`, employee);
+    }
+
 
     saveEmployee(employee: Employee): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveEmployee`, employee);
 
-    };
+    }
 }

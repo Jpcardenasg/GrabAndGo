@@ -8,9 +8,7 @@ export interface Payment {
     paymentMethod: PaymentMethod;
 }
 
-export interface PaymentResults {
-    payments: Payment[];
-}
+export type PaymentResults = Payment[];
 
 
 export interface PaymentField {
@@ -26,9 +24,7 @@ export interface PaymentMethod {
     name: string;
 }
 
-export interface PaymentMethodResults {
-    paymentMethods: PaymentMethod[];
-}
+export type PaymentMethodResults = PaymentMethod[];
 
 export interface PaymentMethodField {
     header: string;
