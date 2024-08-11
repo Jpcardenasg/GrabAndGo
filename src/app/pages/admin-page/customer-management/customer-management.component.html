@@ -23,9 +23,9 @@
                 </tr>
             </thead>
 
-            @if(customerList$ | async; as customerResults) {
+            @if(customerList$ | async; as customers) {
             <tbody class="bg-white divide-y divide-gray-200">
-                @for (customer of customerResults.customers; track customer.id) {
+                @for (customer of customers; track customer.id) {
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.name }}</td>

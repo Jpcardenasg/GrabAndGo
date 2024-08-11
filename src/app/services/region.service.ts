@@ -16,6 +16,10 @@ export class RegionService {
         return this.http.get<RegionResults>(`${this.apiUrl}/allRegions`);
     };
 
+    getRegionListView(): Observable<RegionResults> {
+        return this.http.get<RegionResults>(`${this.apiUrl}/allRegionsView`);
+    };
+
     deleteRegion(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/deleteRegion/${id}`);
     }

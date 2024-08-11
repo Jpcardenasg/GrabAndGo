@@ -27,12 +27,12 @@ export class ProductManagementComponent implements OnInit {
 
     ngOnInit(): void {
         this.productList$ = this.service.getProductList();
-        this.productList$.subscribe({
-            next: (data) => {
-                console.log('Product list data:', data);
-            },
-            error: (err) => console.error('Error fetching product list:', err)
-        });
+        // this.productList$.subscribe({
+        //     next: (data) => {
+        //         console.log('Product list data:', data);
+        //     },
+        //     error: (err) => console.error('Error fetching product list:', err)
+        // });Debuggear
     }
 
     isModalOpen = false;

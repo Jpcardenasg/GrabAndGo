@@ -41,23 +41,23 @@
                                formControlName="address"></app-input>
 
                     <div class="flex justify-between my-8 h-12">
-                        @if ( countryList$ | async; as countryResults) {
+                        @if ( countryList$ | async; as countries) {
                         <app-select selectId="country" name="country" label="Country" width="160px"
                                     formControlName="country">
                             <option value="" selected disabled>Country</option>
 
-                            @for (country of countryResults.countries; track country.id) {
-                            <option [value]="country">{{country}}</option>
+                            @for (country of countries; track country.id) {
+                            <option [value]="country.id">{{country.name}}</option>
                             }
                         </app-select>
                         }
 
-                        @if ( regionList$ | async; as regionResults) {
+                        @if ( regionList$ | async; as regions) {
                         <app-select selectId="region" name="region" label="Region" width="160px"
                                     formControlName="region">
                             <option value="" selected disabled>Region</option>
-                            @for (region of regionResults.regions; track region.id) {
-                            <option [value]="region">{{region}}</option>
+                            @for (region of regions; track region.id) {
+                            <option [value]="region.id">{{region.name}}</option>
                             }
                         </app-select>
                         }
@@ -65,12 +65,12 @@
 
                     <div class="flex justify-between my-8 h-12">
 
-                        @if ( cityList$ | async; as cityResults) {
+                        @if ( cityList$ | async; as cities) {
                         <app-select selectId="city" name="city" label="City" width="160px" formControlName="city">
                             <option value="" selected disabled>City</option>
 
-                            @for (city of cityResults.cities; track city.id) {
-                            <option [value]="city">{{city}}</option>
+                            @for (city of cities; track city.id) {
+                            <option [value]="city.id">{{city.name}}</option>
                             }
                         </app-select>
                         }

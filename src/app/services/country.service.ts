@@ -16,6 +16,10 @@ export class CountryService {
         return this.http.get<CountryResults>(`${this.apiUrl}/allCountries`);
     };
 
+    getCountryListView(): Observable<CountryResults> {
+        return this.http.get<CountryResults>(`${this.apiUrl}/allCountriesView`);
+    };
+
     getCountry(id: number): Observable<Country> {
         return this.http.get<Country>(`${this.apiUrl}/getCountry/${id}`);
     }

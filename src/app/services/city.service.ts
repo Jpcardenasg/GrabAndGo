@@ -16,6 +16,10 @@ export class CityService {
         return this.http.get<CityResults>(`${this.apiUrl}/allCities`);
     };
 
+    getCityListView(): Observable<CityResults> {
+        return this.http.get<CityResults>(`${this.apiUrl}/allCitiesView`);
+    };
+
     getCity(id: number): Observable<City> {
         return this.http.get<City>(`${this.apiUrl}/getCity/${id}`);
     }
