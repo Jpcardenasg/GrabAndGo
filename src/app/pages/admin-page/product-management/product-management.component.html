@@ -13,17 +13,19 @@
                 </tr>
             </thead>
 
-            @if (productList$ | async; as productResults) {
+            @if (productList$ | async; as products) {
             <tbody class="bg-white divide-y divide-gray-200">
-                @for (product of productResults.products; track product.id) {
+                @for (product of products; track product.id) {
                 <tr (click)="selectProduct(product)" class="cursor-pointer hover:bg-gray-100 transition">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.gamma }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.gamma || 'N/A' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.description }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplier.name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplier?.name || 'N/A'}}
+                    </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.sellPrice }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplierPrice }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplierPrice || 'N/A' }}
+                    </td>
                 </tr>
                 }
             </tbody>
@@ -37,7 +39,7 @@
 
         @for (field of productFields; track field) {
         <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
-                   [value]="selectedProduct ? selectedProduct.name : ''" width="100%"></app-input>}
+                   [value]="selectedProduct ?( selectedProduct.name || '') : ''" width="100%"></app-input>}
 
     </app-modal>
     }

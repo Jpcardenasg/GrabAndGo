@@ -3,17 +3,15 @@ import { Supplier } from "./Supplier";
 export interface Product {
     id: number;
     name: string;
-    gamma: string;
+    gamma: string | null;
     description: string;
-    supplier: Supplier;
+    supplier: Supplier | null;
     sellPrice: number;
-    supplierPrice: number;
+    supplierPrice: number | null;
 }
 
 
-export interface ProductResults {
-    products: Product[];
-}
+export type ProductResults = Product[];
 
 export interface ProductField {
     header: string;
