@@ -16,19 +16,38 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class LoginComponent implements OnInit {
 
     signInForm!: FormGroup;
+    signUpForm!: FormGroup;
 
     private readonly _fb = inject(FormBuilder);
     private readonly _router = inject(Router);
     private readonly _authSvc = inject(AuthService);
 
     ngOnInit(): void {
-        this._buildForm();
+        this._buildSignInForm();
+        this._buildSignUpForm();
     }
 
-    private _buildForm(): void {
+    private _buildSignInForm(): void {
         this.signInForm = this._fb.nonNullable.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
+        });
+    }
+
+    private _buildSignUpForm(): void {
+        this.signUpForm = this._fb.nonNullable.group({
+            name: ['', Validators.required],
+            lastName: ['', Validators.required],
+            username: ['', Validators.required],
+            password: ['', Validators.required],
+            email: ['', Validators.required],
+            idNumber: ['', Validators.required],
+            telephone: ['', Validators.required],
+            address: ['', Validators.required],
+            country: ['', Validators.required],
+            region: ['', Validators.required],
+            city: ['', Validators.required],
+            postalCode: ['', Validators.required],
         });
     }
 
@@ -50,6 +69,15 @@ export class LoginComponent implements OnInit {
         );
 
     }
+
+    onRegister(): void {
+        const newUser = this.signUpForm.value;
+        console.log(newUser);
+
+
+    }
+
+
 
     @ViewChild('container') container!: ElementRef;
     toggleSignIn() {

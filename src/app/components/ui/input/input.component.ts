@@ -1,13 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'app-input',
     standalone: true,
     imports: [],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: InputComponent,
+            multi: true
+        }
+    ],
     templateUrl: './input.component.html',
     styleUrl: './input.component.css'
 })
-export class InputComponent {
+export class InputComponent implements ControlValueAccessor {
 
     @Input() label?: string;
     @Input() type?: string;
@@ -16,10 +24,16 @@ export class InputComponent {
     @Input() width?: string;
 
     @Output() valueChange = new EventEmitter<string>();
+    value: string = '';
+
+    private onChange = (value: string) => { };
+    private onTouched = () => { };
 
     onInput(event: Event): void {
         const input = event.target as HTMLInputElement;
-        this.valueChange.emit(input.value);
+        this.value = input.value;
+        this.onChange(this.value);
+        this.valueChange.emit(this.value);
     }
 
     setWidth(): string {
@@ -27,6 +41,20 @@ export class InputComponent {
             return this.width;
         }
         return '330px';
+    }
 
+    writeValue(value: string): void {
+        this.value = value || '';
+    }
+
+    registerOnChange(fn: any): void {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any): void {
+        this.onTouched = fn;
+    }
+
+    setDisabledState?(isDisabled: boolean): void {
     }
 }
