@@ -8,6 +8,7 @@ export interface Product {
     supplier: Supplier | null;
     sellPrice: number;
     supplierPrice: number | null;
+    img: string | null;
     
 }
 

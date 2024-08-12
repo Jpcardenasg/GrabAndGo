@@ -2,8 +2,7 @@
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 p-2">
         @for (product of products; track product.id) {
         <article class="bg-white rounded-lg p-6 w-full h-full transition-all duration-300 shadow-md hover:scale-105 hover:shadow-lg">
-            <!-- <img [src]="'products/' + product.name + '.jpg'" alt="{{ product.name }}" class="w-full h-80 object-cover rounded-t"> -->
-            <img [src]="'products/' + product.name + '.jpg'" alt="{{ product.name }}" class="w-full h-80 object-cover rounded-t">
+            <img [src]="product.img" alt="{{ product.name }}" class="w-full h-80 object-cover rounded-t">
             <h2 class="text-2xl font-bold mb-2">{{ product.name }}</h2>
         <p class="text-gray-600">{{ product.description }}</p>
         <p class="text-lg font-bold">{{ product.sellPrice }}</p>
