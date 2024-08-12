@@ -27,6 +27,7 @@ export const routes: Routes = [
             { path: 'employees', component: EmployeeManagementComponent, data: { title: 'Employee' } },
             { path: 'entities', component: EntityManagementComponent, data: { title: 'Entity' } },
         ]
+        
     },
     { path: 'aboutUs', component: AboutUsComponent },
 
