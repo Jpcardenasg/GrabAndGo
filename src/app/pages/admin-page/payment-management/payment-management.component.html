@@ -1,18 +1,7 @@
 <main class="p-4">
-    @if (isModalOpen) {
-    <app-modal [title]="title" (close)="closeModal()">
+    <app-management-bar (add)="handleAdd()" (edit)="handleEdit()" (delete)="handleDelete()"
+                        [title]="title"></app-management-bar>
 
-        @for (field of paymentFields; track field) {
-        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" width="100%"></app-input>}
-
-        <div class="flex justify-center">
-            <app-main-button label="Save"></app-main-button>
-        </div>
-    </app-modal>
-    }
-
-
-    <app-management-bar (add)="openModal()" [title]="title"></app-management-bar>
 
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
@@ -29,7 +18,8 @@
             @if(paymentList$ | async; as payments) {
             <tbody class="bg-white divide-y divide-gray-200">
                 @for (payment of payments; track payment.id) {
-                <tr>
+                <tr (click)="selectPayment(payment)" class="cursor-pointer hover:bg-gray-100 transition"
+                    [class.bg-gray-200]="selectedPayment === payment">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ payment.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ payment.date }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ payment.total }}</td>
@@ -43,4 +33,16 @@
 
         </table>
     </div>
+
+    <!-- Modal -->
+    @if (isModalOpen) {
+    <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()" (save)="savePayment()">
+
+        @for (field of paymentFields; track field) {
+        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
+                   [value]="getFieldValue(selectedPayment, field.name)" width="100%">
+        </app-input>}
+
+    </app-modal>
+    }
 </main>

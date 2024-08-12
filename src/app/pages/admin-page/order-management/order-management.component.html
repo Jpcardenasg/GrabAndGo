@@ -1,18 +1,6 @@
 <main class="p-4">
-    @if (isModalOpen) {
-    <app-modal [title]="title" (close)="closeModal()">
-
-        @for (field of orderFields; track field) {
-        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" width="100%"></app-input>}
-
-        <div class="flex justify-center">
-            <app-main-button label="Save"></app-main-button>
-        </div>
-    </app-modal>
-    }
-
-
-    <app-management-bar (add)="openModal()" [title]="title"></app-management-bar>
+    <app-management-bar (add)="handleAdd()" (edit)="handleEdit()" (delete)="handleDelete()"
+                        [title]="title"></app-management-bar>
 
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
@@ -29,7 +17,7 @@
             @if(orderList$ | async; as orders) {
             <tbody class="bg-white divide-y divide-gray-200">
                 @for (order of orders; track order.id) {
-                <tr>
+                <tr (click)="selectOrder(order)" class="cursor-pointer hover:bg-gray-100 transition">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.orderDate }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.shippingDate }}</td>
@@ -44,4 +32,16 @@
 
         </table>
     </div>
+
+    <!-- Modal -->
+    @if (isModalOpen) {
+    <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()" (save)="saveOrder()">
+
+        @for (field of orderFields; track field) {
+        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
+                   [value]="getFieldValue(selectedOrder, field.name)" width="100%">
+        </app-input>}
+
+    </app-modal>
+    }
 </main>

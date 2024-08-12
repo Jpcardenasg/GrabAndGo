@@ -12,14 +12,19 @@ export class ManagementBarComponent {
 
     @Output() add = new EventEmitter<void>();
     @Output() edit = new EventEmitter<void>();
+    @Output() delete = new EventEmitter<void>();
 
 
-    addElement() {
+    onAdd() {
         this.add.emit();
     }
 
-    editElement() {
+    onEdit() {
         this.edit.emit();
+    }
+
+    onDelete() {
+        this.delete.emit();
     }
 
 }

@@ -7,17 +7,17 @@
                class="bg-white text-gray-900 rounded-full px-4 py-2 w-full focus:outline-none shadow-sm">
     </div>
     <div class="flex space-x-4">
-        <button
+        <button (click)="onDelete()"
                 class="bg-white text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300 shadow-sm flex items-center">
             <i class='bx bx-trash'></i>
             Delete
         </button>
-        <button (click)="editElement()" class=" bg-white text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300 shadow-sm flex
+        <button (click)="onEdit()" class=" bg-white text-gray-800 px-4 py-2 rounded hover:bg-gray-300 transition duration-300 shadow-sm flex
                 items-center">
             <i class='bx bx-edit'></i>
             Edit
         </button>
-        <button (click)="addElement()"
+        <button (click)="onAdd()"
                 class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 shadow-sm flex items-center">
             <i class='bx bx-plus'></i>
             Add {{title}}

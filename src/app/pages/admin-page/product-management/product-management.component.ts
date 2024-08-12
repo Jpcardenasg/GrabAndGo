@@ -27,13 +27,6 @@ export class ProductManagementComponent implements OnInit {
 
     ngOnInit(): void {
         this.productList$ = this.service.getProductList();
-
-        this.service.getProductList().subscribe({
-            next(value) {
-                console.log(value);
-
-            },
-        });
     }
 
     isModalOpen = false;
@@ -63,8 +56,43 @@ export class ProductManagementComponent implements OnInit {
         }
     }
 
+    handleDelete() {
+        if (this.selectedProduct) {
+            this.service.deleteProduct(this.selectedProduct.id).subscribe({
+                next: () => {
+                    this.productList$ = this.service.getProductList();
+                    this.selectedProduct = null;
+                },
+                error: (err) => console.error('Error deleting Product:', err)
+            });
+        } else {
+            alert('Please select a Product to delete.');
+        }
+    }
+
+    saveProduct() {
+        if (this.selectedProduct) {
+            if (this.modalLabel === "Save") {
+                this.service.saveProduct(this.selectedProduct).subscribe({
+                    next: () => {
+                        this.productList$ = this.service.getProductList();
+                        this.closeModal();
+                    },
+                    error: (err) => console.error('Error saving Product:', err)
+                });
+            } else if (this.modalLabel === "Edit") {
+                this.service.updateProduct(this.selectedProduct.id, this.selectedProduct).subscribe({
+                    next: () => {
+                        this.productList$ = this.service.getProductList();
+                        this.closeModal();
+                    },
+                    error: (err) => console.error('Error updating product:', err)
+                });
+            }
+        }
+    }
+
     getFieldValue(product: Product | null, fieldName: string): any {
-        console.log(product);
 
         return product ? product[fieldName as keyof Product] : '';
     }

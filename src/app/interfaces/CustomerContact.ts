@@ -8,6 +8,13 @@ export interface CustomerContact {
     phone: Phone;
 }
 
+export interface CustomerContactIN {
+    id: number;
+    email: string;
+}
+
+export type Contacts = CustomerContactIN[];
+
 export type CustomerContactResults = CustomerContact[];
 
 

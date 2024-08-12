@@ -1,15 +1,6 @@
 <main class="p-4">
-    @if (isModalOpen) {
-    <app-modal label="Save" [title]="title" (close)="closeModal()">
-
-        @for (field of customerFields; track field) {
-        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" width="100%"></app-input>}
-
-    </app-modal>
-    }
-
-
-    <app-management-bar (add)="openModal()" [title]="title"></app-management-bar>
+    <app-management-bar (add)="handleAdd()" (edit)="handleEdit()" (delete)="handleDelete()"
+                        [title]="title"></app-management-bar>
 
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
@@ -26,17 +17,20 @@
             @if(customerList$ | async; as customers) {
             <tbody class="bg-white divide-y divide-gray-200">
                 @for (customer of customers; track customer.id) {
-                <tr>
+                <tr (click)="selectCustomer(customer)" class="cursor-pointer hover:bg-gray-100 transition"
+                    [class.bg-gray-200]="selectedCustomer === customer">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.user_id}}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.lastName }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{
+                        customer.contactsCustomer[0].email}}
+                    </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.address }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.postalCode }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.city.name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.customerContact.phone}}
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.city_id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.employee_id || 'N/A'}}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.employee?.name}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ customer.user.username}}</td>
 
                 </tr>
                 }
@@ -45,4 +39,16 @@
 
         </table>
     </div>
+
+    <!-- Modal -->
+    @if (isModalOpen) {
+    <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()" (save)="saveCustomer()">
+
+        @for (field of customerFields; track field) {
+        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
+                   [value]="getFieldValue(selectedCustomer, field.name)" width="100%">
+        </app-input>}
+
+    </app-modal>
+    }
 </main>

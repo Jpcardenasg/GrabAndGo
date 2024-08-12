@@ -1,18 +1,6 @@
 <main class="p-4">
-    @if (isModalOpen) {
-    <app-modal [title]="title" (close)="closeModal()">
-
-        @for (field of employeeFields; track field) {
-        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" width="100%"></app-input>}
-
-        <div class="flex justify-center">
-            <app-main-button label="Save"></app-main-button>
-        </div>
-    </app-modal>
-    }
-
-
-    <app-management-bar (add)="openModal()" [title]="title"></app-management-bar>
+    <app-management-bar (add)="handleAdd()" (edit)="handleEdit()" (delete)="handleDelete()"
+                        [title]="title"></app-management-bar>
 
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
@@ -29,17 +17,17 @@
             @if(employeeList$ | async; as employees) {
             <tbody class="bg-white divide-y divide-gray-200">
                 @for (employee of employees; track employee.id) {
-                <tr>
+                <tr (click)="selectEmployee(employee)" class="cursor-pointer hover:bg-gray-100 transition"
+                    [class.bg-gray-200]="selectedEmployee === employee">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.lastName1 }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.lastName2 }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.lastName }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.email }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.extencion }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.extension }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.position }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.telephone }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.boss.id}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.office.id}}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.user }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.boss || 'N/A'}}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.office}}</td>
 
                 </tr>
                 }
@@ -48,4 +36,16 @@
 
         </table>
     </div>
+
+    <!-- Modal -->
+    @if (isModalOpen) {
+    <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()" (save)="saveEmployee()">
+
+        @for (field of employeeFields; track field) {
+        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
+                   [value]="getFieldValue(selectedEmployee, field.name)" width="100%">
+        </app-input>}
+
+    </app-modal>
+    }
 </main>

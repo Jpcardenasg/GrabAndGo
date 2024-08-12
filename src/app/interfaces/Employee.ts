@@ -2,17 +2,15 @@ import { Office } from "./Office";
 import { User } from "./User";
 
 export interface Employee {
-    id: number;
+    id: string;
     name: String;
-    lastName1: string;
-    lastName2: string;
+    lastName: string;
     email: string;
-    extencion: string;
+    extension: string;
     position: string;
-    user: User;
-    telephone: number;
-    boss: Employee;
-    office: Office;
+    user: string;
+    boss: string | null;
+    office: number;
 }
 
 export type EmployeeResults = Employee[];

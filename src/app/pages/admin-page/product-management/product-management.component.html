@@ -1,5 +1,6 @@
 <main class="p-4">
-    <app-management-bar (add)="handleAdd()" (edit)="handleEdit()" [title]="title"></app-management-bar>
+    <app-management-bar (add)="handleAdd()" (edit)="handleEdit()" (delete)="handleDelete()"
+                        [title]="title"></app-management-bar>
 
     <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
         <table class="min-w-full divide-y divide-gray-200">
@@ -16,7 +17,8 @@
             @if (productList$ | async; as products) {
             <tbody class="bg-white divide-y divide-gray-200">
                 @for (product of products; track product.id) {
-                <tr (click)="selectProduct(product)" class="cursor-pointer hover:bg-gray-100 transition">
+                <tr (click)="selectProduct(product)" class="cursor-pointer hover:bg-gray-100 transition"
+                    [class.bg-gray-200]="selectedProduct === product">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.gamma || 'N/A' }}</td>
@@ -36,7 +38,7 @@
 
     <!-- Modal -->
     @if (isModalOpen) {
-    <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()">
+    <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()" (save)="saveProduct()">
 
         @for (field of productFields; track field) {
         <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
