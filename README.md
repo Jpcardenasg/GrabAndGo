@@ -1,5 +1,3 @@
-
-
 # **Sistema de Gestión Empresarial**
 
 ## **Introducción al Proyecto**
@@ -12,20 +10,15 @@ La implementación del sistema permite a los administradores llevar a cabo diver
 
 El proyecto se construye utilizando un conjunto de tecnologías modernas y probadas para garantizar su eficiencia y escalabilidad:
 
-### **Backend**
-- **Java** con **Spring Boot**: Para manejar la lógica de negocio.
-- **Spring Data JPA**: Para la persistencia de datos y la interacción con la base de datos.
-- **PostgreSQL**: Como base de datos relacional para almacenar la información de manera estructurada desde railway.
-- **Spring Security**: Para asegurar la autenticación y autorización dentro del sistema.
-- **Maven**: Para la gestión de dependencias y el ciclo de vida del proyecto.
-
 ### **Frontend**
+
 - **Angular**: Para construir la interfaz de usuario y proporcionar una experiencia interactiva.
 - **TypeScript**: Como lenguaje principal para el desarrollo del frontend, aprovechando sus características de tipado estático.
 - **HTML5** y **CSS3**: Para estructurar y estilizar las páginas web.
 - **Tailwind CSS**: Para el diseño responsivo y estilización avanzada.
 
 ### **Herramientas de Desarrollo**
+
 - **Visual Studio Code**: Como entorno de desarrollo principal para editar y gestionar el código fuente.
 - **GitHub**: Para el control de versiones y la colaboración en el desarrollo del proyecto.
 
@@ -61,13 +54,4 @@ El sistema cubre una variedad de casos de uso que permiten a los administradores
 
 ---
 
-### **MODELO RELACIONAL**
-
-<!-- ![image](DER_Taller3.png) -->
-
-**DDL**
-
-```postgresql
-
-```
-
+Link Backend: https://github.com/Jpcardenasg/grabandgo-backend
