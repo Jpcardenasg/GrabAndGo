@@ -103,12 +103,15 @@ export class CustomerManagementComponent implements OnInit {
                     id: formData.user_id
                 },
                 city: {
-                    id: formData.city
+                    id: formData.city_id
                 },
                 employee: {
                     id: formData.employee_id
                 }
             };
+
+            console.log(customerData);
+
 
             if (this.modalLabel === "Save") {
                 this.service.saveCustomer(customerData).subscribe({
