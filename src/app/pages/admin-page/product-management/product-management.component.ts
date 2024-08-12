@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ManagementBarComponent } from '../../../components/management-bar/management-bar.component';
 import { ModalComponent } from '../../../components/modal/modal.component';
 import { InputComponent } from '../../../components/ui/input/input.component';
@@ -7,6 +7,7 @@ import { AsyncPipe } from '@angular/common';
 import { Product, ProductField, ProductResults } from '../../../interfaces/Product';
 import { Observable } from 'rxjs';
 import { ProductService } from '../../../services/product.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-product-management',
@@ -19,6 +20,9 @@ export class ProductManagementComponent implements OnInit {
 
     @Input() title?: string;
 
+    productForm!: FormGroup;
+
+    private readonly _fb = inject(FormBuilder);
     public productList$!: Observable<ProductResults>;
     public selectedProduct: Product | null = null;
     public modalLabel: string = "Save";
@@ -27,7 +31,22 @@ export class ProductManagementComponent implements OnInit {
 
     ngOnInit(): void {
         this.productList$ = this.service.getProductList();
+        this._buildProductForm();
+
     }
+
+    private _buildProductForm(): void {
+        this.productForm = this._fb.nonNullable.group({
+            id: ['', Validators.required],
+            name: ['', Validators.required],
+            gamma: ['', Validators.required],
+            description: ['', Validators.required],
+            img: ['', Validators.required],
+            sellPrice: ['', Validators.required],
+            supplierPrice: ['', Validators.required],
+        });
+    }
+
 
     isModalOpen = false;
 
@@ -71,23 +90,37 @@ export class ProductManagementComponent implements OnInit {
     }
 
     saveProduct() {
-        if (this.selectedProduct) {
-            if (this.modalLabel === "Save") {
-                this.service.saveProduct(this.selectedProduct).subscribe({
-                    next: () => {
-                        this.productList$ = this.service.getProductList();
-                        this.closeModal();
-                    },
-                    error: (err) => console.error('Error saving Product:', err)
-                });
-            } else if (this.modalLabel === "Edit") {
-                this.service.updateProduct(this.selectedProduct.id, this.selectedProduct).subscribe({
-                    next: () => {
-                        this.productList$ = this.service.getProductList();
-                        this.closeModal();
-                    },
-                    error: (err) => console.error('Error updating product:', err)
-                });
+
+        if (this.productForm.valid) {
+            const formData = this.productForm.value;
+
+            const productData = {
+                id: formData.id,
+                name: formData.name,
+                gamma: formData.gamma,
+                description: formData.description,
+
+            };
+
+            console.log(productData);
+            if (this.selectedProduct) {
+                if (this.modalLabel === "Save") {
+                    this.service.saveProduct(this.selectedProduct).subscribe({
+                        next: () => {
+                            this.productList$ = this.service.getProductList();
+                            this.closeModal();
+                        },
+                        error: (err) => console.error('Error saving Product:', err)
+                    });
+                } else if (this.modalLabel === "Edit") {
+                    this.service.updateProduct(this.selectedProduct.id, this.selectedProduct).subscribe({
+                        next: () => {
+                            this.productList$ = this.service.getProductList();
+                            this.closeModal();
+                        },
+                        error: (err) => console.error('Error updating product:', err)
+                    });
+                }
             }
         }
     }

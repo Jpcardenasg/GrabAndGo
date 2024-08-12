@@ -44,10 +44,12 @@
     @if (isModalOpen) {
     <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()" (save)="saveCustomer()">
 
-        @for (field of customerFields; track field) {
-        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
-                   [value]="getFieldValue(selectedCustomer, field.name)" width="100%">
-        </app-input>}
+        <form (submit)="saveCustomer()" [formGroup]="customerForm">
+            @for (field of customerFields; track field) {
+            <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" [formControlName]="field.name"
+                       width="100%">
+            </app-input>}
+        </form>
 
     </app-modal>
     }

@@ -13,6 +13,10 @@ export interface Employee {
     office: number;
 }
 
+export interface EmployeeId {
+    id: string;
+}
+
 export type EmployeeResults = Employee[];
 
 export interface EmployeeField {

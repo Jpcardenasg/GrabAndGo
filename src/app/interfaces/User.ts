@@ -10,6 +10,10 @@ export interface User {
     customer: Customer | null;
 }
 
+export interface UserId {
+    id: number;
+}
+
 export type UserResults = User[];
 
 export interface UserField {

@@ -1,9 +1,9 @@
 import { City, CityId } from "./LocationModels";
 import { Contacts, CustomerContact } from "./CustomerContact";
-import { Employee } from "./Employee";
 import { Order } from "./Order";
-import { User } from "./User";
 import { SavePhone } from "./Phone";
+import { UserId } from "./User";
+import { EmployeeId } from "./Employee";
 
 export interface Customer {
     id: string;
@@ -17,6 +17,17 @@ export interface Customer {
     employee_id: string | null;
     order: Order | null;
     user_id: string;
+}
+
+export interface NewCustomer {
+    id: string,
+    name: string,
+    lastName: string,
+    address: string,
+    postalCode: string,
+    user: UserId,
+    city: CityId,
+    employee: EmployeeId;
 }
 
 export interface SaveCustomer {
