@@ -34,8 +34,9 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.orderDate }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.shippingDate }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.estimatedDeliveryDate }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.status.name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.customer.name }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.status?.name || 'N/A' }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.customer?.name || 'N/A' }}
+                    </td>
                 </tr>
                 }
             </tbody>

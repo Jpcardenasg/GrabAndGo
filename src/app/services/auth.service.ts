@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Observable, tap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 import { UserLogged, UserLogin } from '../interfaces/User';
 import { Router } from '@angular/router';
+import { SaveCustomer } from '../interfaces/Customer';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    private readonly _apiUrl = `${environment.authUrl}/login`;
+    private readonly _loginUrl = `${environment.authUrl}/login`;
+    private readonly _registerUrl = `${environment.authUrl}/register`;
     private readonly _authToken = 'authToken';
     private readonly _roleKey = 'userRole';
 
@@ -18,12 +20,23 @@ export class AuthService {
     private readonly _http = inject(HttpClient);
 
     login(user: UserLogin): Observable<UserLogged> {
-        return this._http.post<UserLogged>(this._apiUrl, user).pipe(
+        return this._http.post<UserLogged>(this._loginUrl, user).pipe(
             tap(response => {
                 if (response.token) {
                     this.setToken(response.token);
                     this.setRole(response.role);
                 }
+            })
+        );
+    }
+
+    register(customer: SaveCustomer): Observable<UserLogged> {
+        return this._http.post<UserLogged>(this._registerUrl, customer).pipe(
+            switchMap(() => {
+                return this.login({
+                    username: customer.username,
+                    password: customer.password
+                });
             })
         );
     }

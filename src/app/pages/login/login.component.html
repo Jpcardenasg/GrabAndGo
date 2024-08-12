@@ -35,45 +35,67 @@
                     <app-input type="email" inputId="emailSignUp" label="Email" formControlName="email"></app-input>
                     <app-input type="text" inputId="idNumberSignUp" label="Identification number"
                                formControlName="idNumber"></app-input>
+                    <div class="flex justify-between my-8 h-12">
+                        <app-select selectId="phoneType" name="phoneType" label="Phone Type" width="160px"
+                                    formControlName="phoneType">
+                            <option value="" selected disabled>Phone Type</option>
+                            <option value="1" selected>Mobile</option>
+                            <option value="2" selected>Home</option>
+                            <option value="3" selected>Work</option>
+                            <option value="4" selected>Fax</option>
+                            <option value="5" selected>Other</option>
+                        </app-select>
+                        <div class="h-12 relative flex rounded-xl w-[160px]">
+                            <input type="number" id="prefix" formControlName="prefix" required
+                                   class="peer w-full outline-none px-4 text-base rounded-xl bg-body focus:bg-white border focus:shadow-md" />
+                            <label for="prefix"
+                                   class="absolute top-1/2 left-4 px-2 rounded bg-body text-input peer-focus:top-0 peer-focus:left-3 font-light text-base peer-focus:bg-white peer-focus:text-sm peer-focus:text-mainpink peer-valid:-top-0 peer-valid:left-3 peer-valid:text-sm peer-valid:text-mainpink translate-y-[-50%] duration-150">
+                                Prefix
+                            </label>
+                        </div>
+                    </div>
                     <app-input type="number" inputId="telephoneSignUp" label="Telephone"
-                               formControlName="telephone"></app-input>
+                               formControlName="phone"></app-input>
                     <app-input type="text" inputId="addressSignUp" label="Address"
                                formControlName="address"></app-input>
 
                     <div class="flex justify-between my-8 h-12">
-                        @if ( countryList$ | async; as countries) {
+
                         <app-select selectId="country" name="country" label="Country" width="160px"
                                     formControlName="country">
                             <option value="" selected disabled>Country</option>
 
+                            @if ( countryList$ | async; as countries) {
                             @for (country of countries; track country.id) {
                             <option [value]="country.id">{{country.name}}</option>
                             }
+                            }
                         </app-select>
-                        }
 
-                        @if ( regionList$ | async; as regions) {
+
                         <app-select selectId="region" name="region" label="Region" width="160px"
                                     formControlName="region">
                             <option value="" selected disabled>Region</option>
+
+                            @if ( regionList$ | async; as regions) {
                             @for (region of regions; track region.id) {
                             <option [value]="region.id">{{region.name}}</option>
                             }
+                            }
                         </app-select>
-                        }
                     </div>
 
                     <div class="flex justify-between my-8 h-12">
 
-                        @if ( cityList$ | async; as cities) {
                         <app-select selectId="city" name="city" label="City" width="160px" formControlName="city">
                             <option value="" selected disabled>City</option>
 
+                            @if ( cityList$ | async; as cities) {
                             @for (city of cities; track city.id) {
                             <option [value]="city.id">{{city.name}}</option>
                             }
+                            }
                         </app-select>
-                        }
 
                         <div class="h-12 relative flex rounded-xl w-[160px]">
                             <input type="number" id="postalCode" formControlName="postalCode" required

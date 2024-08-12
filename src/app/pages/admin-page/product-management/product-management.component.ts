@@ -27,12 +27,13 @@ export class ProductManagementComponent implements OnInit {
 
     ngOnInit(): void {
         this.productList$ = this.service.getProductList();
-        // this.productList$.subscribe({
-        //     next: (data) => {
-        //         console.log('Product list data:', data);
-        //     },
-        //     error: (err) => console.error('Error fetching product list:', err)
-        // });Debuggear
+
+        this.service.getProductList().subscribe({
+            next(value) {
+                console.log(value);
+
+            },
+        });
     }
 
     isModalOpen = false;
@@ -62,12 +63,19 @@ export class ProductManagementComponent implements OnInit {
         }
     }
 
+    getFieldValue(product: Product | null, fieldName: string): any {
+        console.log(product);
+
+        return product ? product[fieldName as keyof Product] : '';
+    }
+
     selectProduct(product: Product) {
         this.selectedProduct = product;
+
     }
 
     productFields: ProductField[] = [
-        { header: "ID", type: "number", name: "productId" },
+        { header: "ID", type: "number", name: "id" },
         { header: "Name", type: "string", name: "name" },
         { header: "Gamma", type: "string", name: "gamma" },
         { header: "Description", type: "string", name: "description" },

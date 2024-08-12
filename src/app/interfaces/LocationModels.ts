@@ -33,6 +33,10 @@ export interface City {
     region: Region;
 }
 
+export interface CityId {
+    id: number;
+}
+
 export type CityResults = City[];
 
 

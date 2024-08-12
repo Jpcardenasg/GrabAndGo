@@ -59,7 +59,9 @@ export class LoginComponent implements OnInit {
             password: ['', Validators.required],
             email: ['', Validators.required],
             idNumber: ['', Validators.required],
-            telephone: ['', Validators.required],
+            phoneType: ['', Validators.required],
+            prefix: ['', Validators.required],
+            phone: ['', Validators.required],
             address: ['', Validators.required],
             country: ['', Validators.required],
             region: ['', Validators.required],
@@ -88,12 +90,46 @@ export class LoginComponent implements OnInit {
     }
 
     onRegister(): void {
-        const newUser = this.signUpForm.value;
-        console.log(newUser);
+        const newRegister = this.signUpForm.value;
 
+        const newPhone = {
+            number: newRegister.phone,
+            prefix: newRegister.prefix,
+            phoneType: { id: newRegister.phoneType }
+        };
+
+        const newCity = {
+            id: newRegister.city
+        };
+
+        const newCustomer = {
+            idNumber: newRegister.idNumber,
+            username: newRegister.username,
+            password: newRegister.password,
+            name: newRegister.name,
+            lastName: newRegister.lastName,
+            address: newRegister.address,
+            postalCode: newRegister.postalCode,
+            city: newCity,
+            phone: newPhone,
+        };
+
+        console.log(newCustomer);
+
+
+        this._authSvc.register(newCustomer).subscribe({
+            next: (response) => {
+                if (response) {
+                    console.log("Register Successful!");
+                    this._router.navigate(['/customer']);
+                }
+            },
+            error: (err) => {
+                console.error('Error during registering', err);
+            },
+        });
 
     }
-
 
 
     @ViewChild('container') container!: ElementRef;

@@ -39,7 +39,8 @@
 
         @for (field of productFields; track field) {
         <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
-                   [value]="selectedProduct ?( selectedProduct.name || '') : ''" width="100%"></app-input>}
+                   [value]="getFieldValue(selectedProduct, field.name)" width="100%">
+        </app-input>}
 
     </app-modal>
     }

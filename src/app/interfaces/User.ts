@@ -28,3 +28,9 @@ export interface UserLogged {
     role: string;
     token: string;
 }
+
+export interface SaveUser {
+    username: string;
+    password: string;
+    role: string;
+}

@@ -3,6 +3,11 @@ export interface PhoneType {
     name: string;
 }
 
+export interface PhoneTypeId {
+    id: number;
+}
+
+
 export type PhoneTypeResults = PhoneType[];
 
 export interface PhoneTypeField {
@@ -18,6 +23,12 @@ export interface Phone {
     prefix: number;
     number: number;
     phoneType: PhoneType;
+}
+
+export interface SavePhone {
+    prefix: number;
+    number: number;
+    phoneType: PhoneTypeId;
 }
 
 export type PhoneResults = Phone[];

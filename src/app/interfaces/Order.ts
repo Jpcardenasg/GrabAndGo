@@ -2,12 +2,12 @@ import { Customer } from "./Customer";
 import { OrderStatus } from "./OrderStatus";
 
 export interface Order {
-    id: number,
-    orderDate: string,
-    shippingDate: string,
-    estimatedDeliveryDate: string,
-    status: OrderStatus,
-    customer: Customer;
+    id: number;
+    orderDate: string;
+    shippingDate: string;
+    estimatedDeliveryDate: string;
+    status: OrderStatus | null;
+    customer: Customer | null;
 }
 
 
