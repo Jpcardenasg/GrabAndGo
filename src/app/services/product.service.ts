@@ -13,8 +13,20 @@ export class ProductService {
 
     constructor(private http: HttpClient) { }
 
-    getProductList(): Observable<Product[]> {
-        return this.http.get<Product[]>(`${this.apiUrl}/allProducts`);
+    getProductList(): Observable<ProductResults> {
+        return this.http.get<ProductResults>(`${this.apiUrl}/allProducts`);
+    }
+
+    getProduct(id: number): Observable<Product> {
+        return this.http.get<Product>(`${this.apiUrl}/getProduct/${id}`);
+    }
+
+    deleteProduct(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteProduct/${id}`);
+    }
+
+    updateProduct(id: number, product: Product): Observable<Product> {
+        return this.http.put<Product>(`${this.apiUrl}/updateProduct/${id}`, product);
     }
 
     saveProduct(product: Product): Observable<any> {

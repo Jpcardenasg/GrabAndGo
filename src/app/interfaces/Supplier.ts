@@ -5,9 +5,7 @@ export interface Supplier {
     name: String;
 }
 
-export interface SupplierResults {
-    suppliers: Supplier[];
-}
+export type SupplierResults = Supplier[];
 
 export interface SupplierField {
     header: string;
@@ -26,14 +24,12 @@ export interface SupplierContact {
     phone: Phone;
 }
 
-export interface SupplierContactResults {
-    suppliersContact: SupplierContact[];
-}
+export type SupplierContactResults = SupplierContact[];
 
 export interface SupplierContactField {
     header: string;
     name: string;
     type: string;
 
-    
+
 }

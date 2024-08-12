@@ -26,9 +26,9 @@
                 </tr>
             </thead>
 
-            @if(orderList$ | async; as orderResults) {
+            @if(orderList$ | async; as orders) {
             <tbody class="bg-white divide-y divide-gray-200">
-                @for (order of orderResults.orders; track order.id) {
+                @for (order of orders; track order.id) {
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ order.orderDate }}</td>

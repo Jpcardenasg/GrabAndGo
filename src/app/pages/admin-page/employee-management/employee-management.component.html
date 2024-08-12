@@ -26,9 +26,9 @@
                 </tr>
             </thead>
 
-            @if(employeeList$ | async; as employeeResults) {
+            @if(employeeList$ | async; as employees) {
             <tbody class="bg-white divide-y divide-gray-200">
-                @for (employee of employeeResults.employees; track employee.id) {
+                @for (employee of employees; track employee.id) {
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.name }}</td>
@@ -40,7 +40,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.telephone }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.boss.id}}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ employee.office.id}}</td>
-                    
+
                 </tr>
                 }
             </tbody>

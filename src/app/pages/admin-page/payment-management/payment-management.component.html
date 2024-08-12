@@ -26,9 +26,9 @@
                 </tr>
             </thead>
 
-            @if(paymentList$ | async; as paymentResults) {
+            @if(paymentList$ | async; as payments) {
             <tbody class="bg-white divide-y divide-gray-200">
-                @for (payment of paymentResults.payments; track payment.id) {
+                @for (payment of payments; track payment.id) {
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ payment.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ payment.date }}</td>

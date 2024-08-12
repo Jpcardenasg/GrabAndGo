@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
         this._buildSignInForm();
         this._buildSignUpForm();
-        this.countryList$ = this._countrySvc.getCountryList();
-        this.regionList$ = this._regionSvc.getRegionList();
-        this.cityList$ = this._citySvc.getCityList();
+        this.countryList$ = this._countrySvc.getCountryListView();
+        this.regionList$ = this._regionSvc.getRegionListView();
+        this.cityList$ = this._citySvc.getCityListView();
     }
 
     private _buildSignInForm(): void {

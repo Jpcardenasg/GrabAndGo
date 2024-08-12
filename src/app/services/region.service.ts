@@ -13,8 +13,20 @@ export class RegionService {
     constructor(private http: HttpClient) { }
 
     getRegionList(): Observable<RegionResults> {
-        return this.http.get<RegionResults>(`${this.apiUrl}/allregiones`);
+        return this.http.get<RegionResults>(`${this.apiUrl}/allRegions`);
     };
+
+    getRegionListView(): Observable<RegionResults> {
+        return this.http.get<RegionResults>(`${this.apiUrl}/allRegionsView`);
+    };
+
+    deleteRegion(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteRegion/${id}`);
+    }
+
+    updateRegion(id: number, region: Region): Observable<Region> {
+        return this.http.put<Region>(`${this.apiUrl}/updateRegion/${id}`, region);
+    }
 
     saveRegion(region: Region): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveRegion`, region);

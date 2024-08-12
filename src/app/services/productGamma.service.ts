@@ -17,7 +17,19 @@ export class ProductGammaService {
         return this.http.get<ProductGammaResults>(`${this.apiUrl}/allProductsGamma`);
     }
 
-    saveProductGamma(productGamma: ProductGamma): Observable<any> {
+    getProductGamma(id: number): Observable<ProductGamma> {
+        return this.http.get<ProductGamma>(`${this.apiUrl}/getProductGamma/${id}`);
+    }
+
+    deleteProductGamma(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteProductGamma/${id}`);
+    }
+
+    updateProductGamma(id: number, productGamma: ProductGamma): Observable<ProductGamma> {
+        return this.http.put<ProductGamma>(`${this.apiUrl}/updateProductGamma/${id}`, productGamma);
+    }
+
+    saveProductGammaGamma(productGamma: ProductGamma): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveProductGamma`, productGamma);
     }
 }

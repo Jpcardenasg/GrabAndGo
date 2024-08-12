@@ -16,6 +16,18 @@ export class PhoneService {
         return this.http.get<PhoneResults>(`${this.apiUrl}/allPhones`);
     };
 
+    getPhone(id: number): Observable<Phone> {
+        return this.http.get<Phone>(`${this.apiUrl}/getPhone/${id}`);
+    }
+
+    deletePhone(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deletePhone/${id}`);
+    }
+
+    updatePhone(id: number, phone: Phone): Observable<Phone> {
+        return this.http.put<Phone>(`${this.apiUrl}/updatePhone/${id}`, phone);
+    }
+
     savePhone(phone: Phone): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/savePhone`, phone);
 

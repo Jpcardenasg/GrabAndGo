@@ -16,6 +16,14 @@ export class PhoneTypeService {
         return this.http.get<PhoneTypeResults>(`${this.apiUrl}/allPhoneTypes`);
     };
 
+    deletePhoneType(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deletePhoneType/${id}`);
+    }
+
+    updatePhoneType(id: number, phoneType: PhoneType): Observable<PhoneType> {
+        return this.http.put<PhoneType>(`${this.apiUrl}/updatePhoneType/${id}`, phoneType);
+    }
+
     savePhoneType(phoneType: PhoneType): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/savePhoneType`, phoneType);
 

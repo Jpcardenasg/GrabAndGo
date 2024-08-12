@@ -16,6 +16,22 @@ export class CountryService {
         return this.http.get<CountryResults>(`${this.apiUrl}/allCountries`);
     };
 
+    getCountryListView(): Observable<CountryResults> {
+        return this.http.get<CountryResults>(`${this.apiUrl}/allCountriesView`);
+    };
+
+    getCountry(id: number): Observable<Country> {
+        return this.http.get<Country>(`${this.apiUrl}/getCountry/${id}`);
+    }
+
+    deleteCountry(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiUrl}/deleteCountry/${id}`);
+    }
+
+    updateCountry(id: number, country: Country): Observable<Country> {
+        return this.http.put<Country>(`${this.apiUrl}/updateCountry/${id}`, country);
+    }
+
     saveCountry(country: Country): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/saveCountry`, country);
 

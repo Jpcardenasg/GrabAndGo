@@ -10,9 +10,7 @@ export interface User {
     customer: Customer | null;
 }
 
-export interface UserResults {
-    Users: User[];
-}
+export type UserResults = User[];
 
 export interface UserField {
     header: string;
