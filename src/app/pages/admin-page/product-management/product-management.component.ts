@@ -99,7 +99,9 @@ export class ProductManagementComponent implements OnInit {
                 name: formData.name,
                 gamma: formData.gamma,
                 description: formData.description,
-
+                img: formData.img,
+                sellPrice: formData.sellPrice,
+                supplierPrice: formData.supplierPrice,
             };
 
             console.log(productData);
