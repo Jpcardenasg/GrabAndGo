@@ -21,11 +21,12 @@
                     [class.bg-gray-200]="selectedProduct === product">
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.id }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.name }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.gamma || 'N/A' }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.description }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplier?.name || 'N/A'}}
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.productGamma_id || 'N/A' }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.sellPrice }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.description }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplier_nit || 'N/A'}}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.sellPrice || 'N/A' }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.supplierPrice || 'N/A' }}
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ product.img || 'N/A' }}
                     </td>
@@ -40,10 +41,13 @@
     @if (isModalOpen) {
     <app-modal [label]="modalLabel" [title]="title" (close)="closeModal()" (save)="saveProduct()">
 
-        @for (field of productFields; track field) {
-        <app-input [inputId]="field.name" [label]="field.header" [type]="field.type"
-                   [value]="getFieldValue(selectedProduct, field.name)" width="100%">
-        </app-input>}
+        <form (submit)="saveProduct()" [formGroup]="productForm">
+            @for (field of productFields; track field) {
+            <app-input [inputId]="field.name" [label]="field.header" [type]="field.type" [formControlName]="field.name"
+                       width="100%">
+            </app-input>}
+        </form>
+
 
     </app-modal>
     }

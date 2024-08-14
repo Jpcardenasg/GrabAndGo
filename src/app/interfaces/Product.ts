@@ -1,15 +1,14 @@
-import { Supplier } from "./Supplier";
 
 export interface Product {
     id: number;
     name: string;
-    gamma: string | null;
+    productGamma_id: number | null;
     description: string;
-    supplier: Supplier | null;
-    sellPrice: number;
+    supplier_nit: string | null;
+    sellPrice: number | null;
     supplierPrice: number | null;
     img: string | null;
-    
+
 }
 
 

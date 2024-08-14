@@ -7,12 +7,12 @@ import { AsyncPipe } from '@angular/common';
 import { Product, ProductField, ProductResults } from '../../../interfaces/Product';
 import { Observable } from 'rxjs';
 import { ProductService } from '../../../services/product.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-product-management',
     standalone: true,
-    imports: [AsyncPipe, ManagementBarComponent, ModalComponent, InputComponent, MainButtonComponent],
+    imports: [AsyncPipe, ReactiveFormsModule, ManagementBarComponent, ModalComponent, InputComponent, MainButtonComponent],
     templateUrl: './product-management.component.html',
     styleUrl: './product-management.component.css'
 })
@@ -32,15 +32,15 @@ export class ProductManagementComponent implements OnInit {
     ngOnInit(): void {
         this.productList$ = this.service.getProductList();
         this._buildProductForm();
-
     }
 
     private _buildProductForm(): void {
         this.productForm = this._fb.nonNullable.group({
             id: ['', Validators.required],
             name: ['', Validators.required],
-            gamma: ['', Validators.required],
+            productGamma_id: ['', Validators.required],
             description: ['', Validators.required],
+            supplier_nit: ['', Validators.required],
             img: ['', Validators.required],
             sellPrice: ['', Validators.required],
             supplierPrice: ['', Validators.required],
@@ -62,16 +62,18 @@ export class ProductManagementComponent implements OnInit {
 
     handleAdd() {
         this.selectedProduct = null;
+        this.productForm.reset();
         this.modalLabel = "Save";
         this.openModal();;
     }
 
     handleEdit() {
         if (this.selectedProduct) {
+            this.productForm.patchValue(this.selectedProduct);
             this.modalLabel = "Edit";
             this.openModal();
         } else {
-            alert('Please select a product to edit.');
+            alert('Please select a Product to edit.');
         }
     }
 
@@ -97,14 +99,17 @@ export class ProductManagementComponent implements OnInit {
             const productData = {
                 id: formData.id,
                 name: formData.name,
-                gamma: formData.gamma,
+                productGammaId: formData.productGamma_id,
                 description: formData.description,
+                supplierNit: formData.supplier_nit,
                 img: formData.img,
                 sellPrice: formData.sellPrice,
                 supplierPrice: formData.supplierPrice,
             };
 
             console.log(productData);
+
+
             if (this.selectedProduct) {
                 if (this.modalLabel === "Save") {
                     this.service.saveProduct(this.selectedProduct).subscribe({
@@ -140,11 +145,12 @@ export class ProductManagementComponent implements OnInit {
     productFields: ProductField[] = [
         { header: "ID", type: "number", name: "id" },
         { header: "Name", type: "string", name: "name" },
-        { header: "Gamma", type: "string", name: "gamma" },
+        { header: "Gamma ID", type: "number", name: "productGamma_id" },
         { header: "Description", type: "string", name: "description" },
-        { header: "Supplier", type: "string", name: "supplier" },
+        { header: "Supplier", type: "string", name: "supplier_nit" },
         { header: "Sell Price", type: "number", name: "sellPrice" },
-        { header: "Supplier Price", type: "number", name: "supplierPrice" }
+        { header: "Supplier Price", type: "number", name: "supplierPrice" },
+        { header: "Image", type: "string", name: "img" }
     ];
 
 }

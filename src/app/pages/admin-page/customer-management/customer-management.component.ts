@@ -135,7 +135,6 @@ export class CustomerManagementComponent implements OnInit {
         }
     }
 
-
     getFieldValue(customer: Customer | null, fieldName: string): any {
 
         return customer ? customer[fieldName as keyof Customer] : '';
